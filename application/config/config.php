@@ -23,7 +23,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = (ENVIRONMENT !== 'production') ? 'http://localhost/form-generator/' : 'https://request.ihow.info/';
+$config['base_url'] = (ENVIRONMENT !== 'production') ? 'http://localhost/reservation-manager/' : 'https://request.ihow.info/';
 
 /*
 |--------------------------------------------------------------------------

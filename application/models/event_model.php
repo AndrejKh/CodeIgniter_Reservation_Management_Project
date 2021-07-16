@@ -6,7 +6,7 @@ use PHPMailer\PHPMailer\SMTP;
 
 define("RECAPTCHA_V3_SECRET_KEY", '6Ldl0nobAAAAALYBbv1GbHah52mJcXyGn43qufvO');
 
-class Request_model extends CI_Model
+class Event_model extends CI_Model
 {
 	public function __construct()
 	{
@@ -24,10 +24,10 @@ class Request_model extends CI_Model
 	}
 
 
-	public function count_admin_forms()
+	public function count_events()
 	{
 		$this->db->select('COUNT(*)');
-		$query = $this->db->get('admin_forms');
+		$query = $this->db->get('events');
 		return	$query->row_array();
 	}
 
@@ -63,11 +63,12 @@ class Request_model extends CI_Model
 		return $query->result_array();
 	}
 
-	public function get_requests()
+	public function get_events($limit, $start)
 	{
 		$this->db->select('*');
-		$query = $this->db->get('requests');
-		return $query->result_array();
+		$this->db->limit($limit, $start);
+		$query = $this->db->get('events');
+		return	$query->result_array();
 	}
 
 	public function get_requests_by_ip($ip, $limit, $start)
@@ -130,41 +131,22 @@ class Request_model extends CI_Model
 		return $query->result_array();
 	}
 
-	public function create_request()
+	public function create_event($img)
 	{
-		$token = $this->input->post('token');
-		$action = $this->input->post('action');
+		$uniqid = 'EV' . uniqid();
 
-		// call curl to POST request
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
-		curl_setopt($ch, CURLOPT_POST, 1);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array('secret' => RECAPTCHA_V3_SECRET_KEY, 'response' => $token)));
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		$response = curl_exec($ch);
-		curl_close($ch);
-		$arrResponse = json_decode($response, true);
-
-		// verify the response
-		if ($arrResponse["success"] == '1' && $arrResponse["action"] == $action && $arrResponse["score"] >= 0.5) {
-			// valid submission
-			$uniqid = 'R' . uniqid();
-
-			$data = array(
-				'name' => $this->input->post('username'),
-				'email' => $this->input->post('email'),
-				'text' => $this->input->post('req-text'),
-				'referer' => $this->input->post('referer'),
-				'ip' => Request_model::getIPAddress(),
-				'id' =>  $uniqid,
-			);
-			$this->db->insert('requests', $data);
-			$this->session->set_flashdata('post_created', 'Your request has been submited,you will recieve an email very soon (please also check spam folder)!');
-		} else {
-			// spam submission
-			$this->session->set_flashdata('bad_request', 'reCAPTCHA failed, Please try again!');
-		}
+		$data = array(
+			'date' => $this->input->post('date'),
+			'guest' => $this->input->post('guest'),
+			'image' => $img,
+			// '' => $this->input->post(''),
+			// 'referer' => $this->input->post('referer'),
+			'idevents' =>  $uniqid,
+		);
+		$this->db->insert('events', $data);
+		$this->session->set_flashdata('post_created', 'Your request has been submited,you will recieve an email very soon (please also check spam folder)!');
 	}
+
 
 
 	public function create_request_by_admin()
@@ -189,7 +171,6 @@ class Request_model extends CI_Model
 			'form_id' => $this->input->post('reqID'),
 			'username' => $this->input->post('username'),
 			'email' => $this->input->post('email'),
-			'ip' => Request_model::getIPAddress(),
 		);
 		$this->db->insert('user_requests', $data);
 		$this->session->set_flashdata('post_created', 'Your request has been submited,you will recieve an email very soon (please also check spam folder)!');
@@ -232,7 +213,7 @@ class Request_model extends CI_Model
 		$message .= 'From referer: ' . $data['referer'] . '<br><br>';
 		$message .= $data['urls'];
 		$message .=  '<br><br>';
-		Request_model::send_email($data['email'], $data['name'], $message, 'URL from xenupload');
+		Event_model::send_email($data['email'], $data['name'], $message, 'URL from xenupload');
 	}
 
 
@@ -255,7 +236,7 @@ class Request_model extends CI_Model
 		Make sure, you have a Premium membership with XenUpload to be able to receive protected files/links.</p>
 		<p>You can become a Premium Member by going to the link below:<br>
 		<a href="https://xenupload.com/upgrade.html">https://xenupload.com/upgrade.html</a></p>';
-		Request_model::send_email($data['email'], $data['name'], $automaticMessage, '');
+		Event_model::send_email($data['email'], $data['name'], $automaticMessage, '');
 	}
 
 	public function send_wrong_username_email()
@@ -275,7 +256,7 @@ class Request_model extends CI_Model
 		Make sure, you have a Premium membership with XenUpload to be able to receive protected files/links.</p>
 		<p>You can become a Premium Member by going to the link below:<br>
 		<a href="https://xenupload.com/upgrade.html">https://xenupload.com/upgrade.html</a></p>';
-		Request_model::send_email($data['email'], $data['username'], $automaticMessage, '');
+		Event_model::send_email($data['email'], $data['username'], $automaticMessage, '');
 	}
 
 	public function send_admin_to_user_email()
@@ -293,7 +274,7 @@ class Request_model extends CI_Model
 		$message .= 'Name: ' . $data['username'] . '<br>';
 		$message .= 'Email: ' . $data['email'] . '<br>';
 		$message .= $this->input->post('req-urls');
-		Request_model::send_email($data['email'], $data['username'], $message, 'URL from xenupload');
+		Event_model::send_email($data['email'], $data['username'], $message, 'URL from xenupload');
 	}
 
 	static public	function getIPAddress()

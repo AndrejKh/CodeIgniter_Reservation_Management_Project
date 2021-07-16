@@ -1,5 +1,5 @@
 <?php
-class Event extends CI_Controller
+class Events extends CI_Controller
 {
 
 
@@ -30,28 +30,48 @@ class Event extends CI_Controller
 		$data['package'] = $this->request_model->get_package_by_id($slug)[0];
 		$data['package']['history'] = $this->request_model->get_history($slug);
 
-
-
 		$this->load->view('templates/header');
 		$this->load->view('packages/view', $data);
 		$this->load->view('templates/footer');
 	}
 
+
+
 	public function create()
 	{
+		// Check login
+		if (!$this->session->userdata('logged_in')) {
+			redirect('users/login');
+		}
+
 		$data['title'] = 'Submit Request';
 
-		$this->form_validation->set_rules('username', 'Username', 'required');
-		$this->form_validation->set_rules('email', 'Email', 'required');
-		$this->form_validation->set_rules('req-text', 'Req text', 'required');
-		$this->form_validation->set_rules('referer', 'Referer', 'required');
-
+		$this->form_validation->set_rules('guest', 'Guest', 'required');
+		$this->form_validation->set_rules('date', 'Date', 'required');
+		// $this->form_validation->set_rules('image', 'Image', 'required');
 		if ($this->form_validation->run() === FALSE) {
 			$this->load->view('templates/header');
-			$this->load->view('packages/create', $data);
+			$this->load->view('events/create', $data);
 			$this->load->view('templates/footer');
 		} else {
-			$this->request_model->create_request();
+			// Upload Image
+			$config['upload_path'] = './assets/images/events';
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size'] = '2048';
+			$config['max_width'] = '2000';
+			$config['max_height'] = '2000';
+
+			$this->load->library('upload', $config);
+
+			if (!$this->upload->do_upload('image')) {
+				$errors = array('error' => $this->upload->display_errors());
+				print_r($errors);
+				$post_image = 'noimage.jpg';
+			} else {
+				$data = array('upload_data' => $this->upload->data());
+				$post_image = $_FILES['image']['name'];
+			}
+			$this->event_model->create_event($post_image);
 			// Set message
 			header("Refresh:0");
 		}
@@ -78,6 +98,25 @@ class Event extends CI_Controller
 			header("Refresh:0");
 		}
 	}
+
+	public function list()
+	{
+		// Check login
+		if (!$this->session->userdata('logged_in')) {
+			redirect('users/login');
+		}
+		$config = Events::get_pagination_config();
+		$config["base_url"] = base_url() . "events/list";
+		$config["total_rows"] = $this->event_model->count_events()['COUNT(*)'];
+		$this->pagination->initialize($config);
+		$offset = ($this->input->get('page')) ? (($this->input->get('page') - 1) * $config["per_page"]) : 0;
+		$data["links"] = $this->pagination->create_links();
+		$data['eventList'] = $this->event_model->get_events($config["per_page"], $offset);
+		$this->load->view('templates/header');
+		$this->load->view('events/list', $data);
+		$this->load->view('templates/footer');
+	}
+
 
 
 	public function submit_to_admin()
@@ -111,249 +150,6 @@ class Event extends CI_Controller
 		$this->session->set_flashdata('post_deleted', 'Your request has been deleted');
 
 		redirect('request/list');
-	}
-
-	public function delete_user_request($id)
-	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
-
-		$this->request_model->delete_user_requests($id);
-
-		// Set message
-		$this->session->set_flashdata('post_deleted', 'Your request has been deleted');
-
-		redirect('request/list-submited/' . $this->input->post('form_id'));
-	}
-
-
-	public function delete_admin_forms($id)
-	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
-
-		$this->request_model->delete_admin_forms($id);
-
-		// Set message
-		$this->session->set_flashdata('post_deleted', 'Your form has been deleted');
-
-		redirect('request/list-admin');
-	}
-
-
-	public function list()
-	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
-		$config = Request::get_pagination_config();
-		$config["base_url"] = base_url() . "request/list";
-		$config["total_rows"] = $this->request_model->get_count_active_grouped()['req_nr'];
-		$this->pagination->initialize($config);
-		$offset = ($this->input->get('page')) ? (($this->input->get('page') - 1) * $config["per_page"]) : 0;
-		$data["links"] = $this->pagination->create_links();
-		$data['requestsList'] = $this->request_model->get_active_requests($config["per_page"], $offset);
-		$this->load->view('templates/header');
-		$this->load->view('packages/list', $data);
-		$this->load->view('templates/footer');
-	}
-
-	public function admin_forms_list()
-	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
-		$config = Request::get_pagination_config();
-		$config["base_url"] = base_url() . "request/list-admin";
-		$config["total_rows"] = $this->request_model->count_admin_forms()['COUNT(*)'];
-		$this->pagination->initialize($config);
-		$offset = ($this->input->get('page')) ? (($this->input->get('page') - 1) * $config["per_page"]) : 0;
-		$data["links"] = $this->pagination->create_links();
-		$data['formsList'] = $this->request_model->get_admin_forms($config["per_page"], $offset, 1);
-		$this->load->view('templates/header');
-		$this->load->view('packages/admin_forms_list', $data);
-		$this->load->view('templates/footer');
-	}
-
-	public function user_submited_list($form_id)
-	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
-		$config = Request::get_pagination_config();
-		$config["base_url"] = base_url() . "request/list-submited/" . $form_id;
-		$config["total_rows"] = $this->request_model->count_user_requests($form_id)['req_nr'];
-		$this->pagination->initialize($config);
-		$offset = ($this->input->get('page')) ? (($this->input->get('page') - 1) * $config["per_page"]) : 0;
-		$data["links"] = $this->pagination->create_links();
-		$data['requestsList'] = $this->request_model->get_user_requests($form_id, $config["per_page"], $offset);
-		$this->load->view('templates/header');
-		$this->load->view('packages/user_request_list', $data);
-		$this->load->view('templates/footer');
-	}
-
-	public function list_completed()
-	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
-		$config = Request::get_pagination_config();
-		$config["base_url"] = base_url() . "request/completed";
-		$config["total_rows"] = $this->request_model->get_request_count(1)['COUNT(*)'];
-		$this->pagination->initialize($config);
-		$offset = ($this->input->get('page')) ? (($this->input->get('page') - 1) * $config["per_page"]) : 0;
-		$data["links"] = $this->pagination->create_links();
-		$data['requestsList'] = $this->request_model->get_completed_requests($config["per_page"], $offset);
-		$this->load->view('templates/header');
-		$this->load->view('packages/list', $data);
-		$this->load->view('templates/footer');
-	}
-
-	public function list_by_ip($ip)
-	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
-
-		$config = Request::get_pagination_config();
-		$config["total_rows"] = $this->request_model->get_count_by_ip($ip)['COUNT(*)'];
-		$this->pagination->initialize($config);
-		$offset = ($this->input->get('page')) ? (($this->input->get('page') - 1) * $config["per_page"]) : 0;
-		$data["links"] = $this->pagination->create_links();
-		$data['requestsList'] = $this->request_model->get_requests_by_ip($ip, $config["per_page"], $offset);
-		$this->load->view('templates/header');
-		$this->load->view('packages/list', $data);
-		$this->load->view('templates/footer');
-	}
-
-	public function edit($slug)
-	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
-
-
-		if (empty($this->request_model->get_request_by_id($slug))) {
-			show_404();
-		} else {
-			$data['request'] = $this->request_model->get_request_by_id($slug)[0];
-		}
-
-		$data['title'] = 'Edit Request';
-
-		$this->load->view('templates/header');
-		$this->load->view('packages/edit', $data);
-		$this->load->view('templates/footer');
-	}
-
-	public function update()
-	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
-
-		$this->request_model->update_request();
-
-		// Set message
-		$this->session->set_flashdata('post_updated', 'Your request has been updated');
-
-		redirect('request/list');
-	}
-
-	public function	request_submited()
-	{
-		$this->form_validation->set_rules('username', 'Username', 'required');
-		$this->form_validation->set_rules('email', 'Email', 'required');
-		$this->form_validation->set_rules('req-text', 'Req text', 'required');
-		$this->form_validation->set_rules('referer', 'Referer', 'required');
-
-		if ($this->form_validation->run() === FALSE) {
-			$this->session->set_flashdata('bad_request', 'Your request was not correct plese try again!');
-			redirect('request/create');
-		} else {
-			$this->request_model->create_request();
-			// Set message
-			$data['message']['status'] = 'success';
-			$data['message']['title'] = 'Request submited successfully!';
-			$data['message']['main'] = 'You will recieve an email very soon with the requested info!';
-			$data['message']['footer'] = '(Please also check spam folder on your email!)';
-		}
-
-		$this->load->view('templates/header');
-		$this->load->view('packages/submit_confirm', $data);
-		$this->load->view('templates/footer');
-	}
-
-	public function send_free_user_email()
-	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
-
-		$this->request_model->send_free_users_email();
-
-		// Set message
-		$this->session->set_flashdata('email_sent', 'Your email has been sent');
-
-		redirect('request/list-ip/' . $this->input->post('ip'));
-	}
-
-	public function send_free_user_email_admin()
-	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
-
-		$this->request_model->send_free_users_email();
-
-		// Set message
-		$this->session->set_flashdata('email_sent', 'Your email has been sent');
-
-		redirect('request/list-submited/' . $this->input->post('id'));
-	}
-
-	public function send_wrong_username_email_admin()
-	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
-
-		$this->request_model->send_wrong_username_email();
-
-		// Set message
-		$this->session->set_flashdata('email_sent', 'Your email has been sent');
-
-		redirect('request/list-submited/' . $this->input->post('formID'));
-	}
-
-
-	public function send_admin_to_user_email()
-	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
-
-		$this->request_model->send_admin_to_user_email();
-
-		// Set message
-		$this->session->set_flashdata('email_sent', 'Your email has been sent');
-
-		redirect('request/list-submited/' . $this->input->post('form_id'));
 	}
 
 
