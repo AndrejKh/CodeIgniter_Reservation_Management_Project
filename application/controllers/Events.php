@@ -6,7 +6,10 @@ class Events extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-
+		// Check login
+		if (!$this->session->userdata('logged_in')) {
+			redirect('users/login');
+		}
 		$this->load->helper('url', 'form');
 		$this->load->library("pagination");
 	}
@@ -25,13 +28,12 @@ class Events extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
-	public function view($slug = NULL)
+	public function view($id)
 	{
-		$data['package'] = $this->request_model->get_package_by_id($slug)[0];
-		$data['package']['history'] = $this->request_model->get_history($slug);
+		$data['package'] = $this->event_model->get_event_by_id($id)[0];
 
 		$this->load->view('templates/header');
-		$this->load->view('packages/view', $data);
+		$this->load->view('events/view', $data);
 		$this->load->view('templates/footer');
 	}
 
@@ -39,16 +41,12 @@ class Events extends CI_Controller
 
 	public function create()
 	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
 
 		$data['title'] = 'Submit Request';
 
 		$this->form_validation->set_rules('guest', 'Guest', 'required');
 		$this->form_validation->set_rules('date', 'Date', 'required');
-		// $this->form_validation->set_rules('image', 'Image', 'required');
+		$this->form_validation->set_rules('ticket_price', 'Ticket price', 'required');
 		if ($this->form_validation->run() === FALSE) {
 			$this->load->view('templates/header');
 			$this->load->view('events/create', $data);
@@ -65,7 +63,6 @@ class Events extends CI_Controller
 
 			if (!$this->upload->do_upload('image')) {
 				$errors = array('error' => $this->upload->display_errors());
-				print_r($errors);
 				$post_image = 'noimage.jpg';
 			} else {
 				$data = array('upload_data' => $this->upload->data());
@@ -76,21 +73,16 @@ class Events extends CI_Controller
 			header("Refresh:0");
 		}
 	}
-	public function create_by_admin()
-	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
 
-		$data['title'] = 'Submit Request';
-		$this->form_validation->set_rules('urls', 'Urls', 'required');
-		$this->form_validation->set_rules('referer', 'Referer', 'required');
-		$this->form_validation->set_rules('form-title', 'Form title', 'required');
+
+	public function reservations($id)
+	{
+
+		$data['reservations'] = $this->reservation_model->get_reservations_for_event($id, 0, 10);
 
 		if ($this->form_validation->run() === FALSE) {
 			$this->load->view('templates/header');
-			$this->load->view('packages/create_by_admin', $data);
+			$this->load->view('reservations/list', $data);
 			$this->load->view('templates/footer');
 		} else {
 			$this->request_model->create_request_by_admin();
@@ -101,10 +93,6 @@ class Events extends CI_Controller
 
 	public function list()
 	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
 		$config = Events::get_pagination_config();
 		$config["base_url"] = base_url() . "events/list";
 		$config["total_rows"] = $this->event_model->count_events()['COUNT(*)'];
@@ -139,10 +127,6 @@ class Events extends CI_Controller
 
 	public function delete($id)
 	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
 
 		$this->request_model->delete_requests($id);
 

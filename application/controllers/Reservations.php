@@ -7,6 +7,11 @@ class Reservations extends CI_Controller
 	{
 		parent::__construct();
 
+		// Check login
+		if (!$this->session->userdata('logged_in')) {
+			redirect('users/login');
+		}
+
 		$this->load->helper('url', 'form');
 		$this->load->library("pagination");
 	}
@@ -56,13 +61,10 @@ class Reservations extends CI_Controller
 			header("Refresh:0");
 		}
 	}
+
+
 	public function create_by_admin()
 	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
-
 		$data['title'] = 'Submit Request';
 		$this->form_validation->set_rules('urls', 'Urls', 'required');
 		$this->form_validation->set_rules('referer', 'Referer', 'required');
@@ -100,10 +102,6 @@ class Reservations extends CI_Controller
 
 	public function delete($id)
 	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
 
 		$this->request_model->delete_requests($id);
 
@@ -115,10 +113,6 @@ class Reservations extends CI_Controller
 
 	public function delete_user_request($id)
 	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
 
 		$this->request_model->delete_user_requests($id);
 
@@ -129,12 +123,21 @@ class Reservations extends CI_Controller
 	}
 
 
+	public function get($id)
+	{
+
+		$data['reservation']	= $this->reservation_model->get_reservation($id);
+
+		$this->load->view('templates/header');
+		$this->load->view('reservation/index', $data);
+		$this->load->view('templates/footer');
+	}
+
+
+
+
 	public function delete_admin_forms($id)
 	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
 
 		$this->request_model->delete_admin_forms($id);
 
@@ -147,10 +150,6 @@ class Reservations extends CI_Controller
 
 	public function list()
 	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
 		$config = Reservations::get_pagination_config();
 		$config["base_url"] = base_url() . "request/list";
 		$config["total_rows"] = $this->request_model->get_count_active_grouped()['req_nr'];
@@ -165,10 +164,6 @@ class Reservations extends CI_Controller
 
 	public function admin_forms_list()
 	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
 		$config = Reservations::get_pagination_config();
 		$config["base_url"] = base_url() . "request/list-admin";
 		$config["total_rows"] = $this->request_model->count_admin_forms()['COUNT(*)'];
@@ -183,10 +178,6 @@ class Reservations extends CI_Controller
 
 	public function user_submited_list($form_id)
 	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
 		$config = Reservations::get_pagination_config();
 		$config["base_url"] = base_url() . "request/list-submited/" . $form_id;
 		$config["total_rows"] = $this->request_model->count_user_requests($form_id)['req_nr'];
@@ -201,10 +192,6 @@ class Reservations extends CI_Controller
 
 	public function list_completed()
 	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
 		$config = Reservations::get_pagination_config();
 		$config["base_url"] = base_url() . "request/completed";
 		$config["total_rows"] = $this->request_model->get_request_count(1)['COUNT(*)'];
@@ -219,10 +206,6 @@ class Reservations extends CI_Controller
 
 	public function list_by_ip($ip)
 	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
 
 		$config = Reservations::get_pagination_config();
 		$config["total_rows"] = $this->request_model->get_count_by_ip($ip)['COUNT(*)'];
@@ -237,10 +220,6 @@ class Reservations extends CI_Controller
 
 	public function edit($slug)
 	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
 
 
 		if (empty($this->request_model->get_request_by_id($slug))) {
@@ -258,10 +237,6 @@ class Reservations extends CI_Controller
 
 	public function update()
 	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
 
 		$this->request_model->update_request();
 
@@ -297,10 +272,6 @@ class Reservations extends CI_Controller
 
 	public function send_free_user_email()
 	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
 
 		$this->request_model->send_free_users_email();
 
@@ -312,10 +283,6 @@ class Reservations extends CI_Controller
 
 	public function send_free_user_email_admin()
 	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
 
 		$this->request_model->send_free_users_email();
 
@@ -327,10 +294,6 @@ class Reservations extends CI_Controller
 
 	public function send_wrong_username_email_admin()
 	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
 
 		$this->request_model->send_wrong_username_email();
 
@@ -343,10 +306,6 @@ class Reservations extends CI_Controller
 
 	public function send_admin_to_user_email()
 	{
-		// Check login
-		if (!$this->session->userdata('logged_in')) {
-			redirect('users/login');
-		}
 
 		$this->request_model->send_admin_to_user_email();
 

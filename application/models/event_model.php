@@ -56,10 +56,10 @@ class Event_model extends CI_Model
 		return	$query->row_array();
 	}
 
-	public function get_request_by_id($id)
+	public function get_event_by_id($id)
 	{
 		$this->db->select('*');
-		$query = $this->db->get_where('requests', array('requests.id' => $id));
+		$query = $this->db->get_where('events', array('idevents' => $id));
 		return $query->result_array();
 	}
 
@@ -139,7 +139,7 @@ class Event_model extends CI_Model
 			'date' => $this->input->post('date'),
 			'guest' => $this->input->post('guest'),
 			'image' => $img,
-			// '' => $this->input->post(''),
+			'ticket_price' => $this->input->post('ticket_price'),
 			// 'referer' => $this->input->post('referer'),
 			'idevents' =>  $uniqid,
 		);
