@@ -1,12 +1,12 @@
-<div class="row">
-  <div class="col-md-8 offset-md-2">
-    <h2><?= $title; ?></h2>
+<div class="row pt-5">
+  <div class="col-md-6 offset-md-3 event-form">
+    <h2 class="text-center fw-bold"><?= $title; ?></h2>
 
     <?php echo validation_errors(); ?>
 
     <?php echo form_open_multipart('events/create', ['id' => 'requestForm']); ?>
     <div class="form-group mb-3">
-      <label>Email</label>
+      <label>Date</label>
       <input type="datetime-local" class="form-control" required name="date" placeholder="Add date">
     </div>
 
@@ -21,7 +21,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="formFile" class="form-label">Default file input example</label>
+      <label for="formFile" class="form-label">Event Banner</label>
       <input class="form-control" type="file" id="image" name="image">
     </div>
 
