@@ -1,9 +1,9 @@
 <div class="row">
   <?php foreach ($eventList as $event) { ?>
 
-    <div class="col-md-3 my-4">
+    <div class="col-lg-3 col-md-6 col-sm-12 my-4">
 
-      <div class="card bg-dark text-white">
+      <div class="card bg-light shadow-sm">
         <img src="<?= base_url() ?>/assets/images/events/<?= $event['image'] ?>" class="card-img" alt="...">
         <div class="card-body">
           <h5 class="card-title"><?= $event['guest'] ?></h5>

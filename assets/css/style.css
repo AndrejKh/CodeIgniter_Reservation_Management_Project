@@ -75,7 +75,7 @@ button {
 
 .form-control:focus {
   color: #495057;
-  background-color: #fff;
+  background-color: #fff !important;
   border: 2px solid rgb(0, 168, 225);
   outline: 0;
   box-shadow: none;
@@ -138,30 +138,164 @@ button {
   }
 }
 
-.rotate-0{    flex-shrink: 0;
+.rotate-0 {
+  flex-shrink: 0;
   display: inline-block;
   width: 16px;
   height: 16px;
   /* vertical-align: middle; */
   margin-right: 20px;
-  transform: rotate(
-0deg
-);
+  transform: rotate(0deg);
   transition: transform 200ms ease 0s;
   position: relative;
   z-index: 0;
 }
 
-.rotate-90{    flex-shrink: 0;
+.rotate-90 {
+  flex-shrink: 0;
   display: inline-block;
   width: 16px;
   height: 16px;
   /* vertical-align: middle; */
   margin-right: 20px;
-  transform: rotate(
--90deg
-);
+  transform: rotate(-90deg);
   transition: transform 200ms ease 0s;
   position: relative;
   z-index: 0;
+}
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+.admin-dropdown {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+body {
+  font-size: 0.875rem;
+}
+
+.feather {
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
+}
+
+/*
+* Sidebar
+*/
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  /* rtl:raw:
+right: 0;
+*/
+  bottom: 0;
+  /* rtl:remove */
+  left: 0;
+  z-index: 100; /* Behind the navbar */
+  padding: 48px 0 0; /* Height of navbar */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 767.98px) {
+  .admin-dropdown {
+    display: block;
+  }
+  .admin-desktop {
+    display: none;
+  }
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+.sidebar .nav-link {
+  font-weight: 500 !important;
+}
+
+.sidebar .nav-link .feather {
+  margin-right: 4px;
+  color: #727272;
+}
+
+.sidebar .nav-link.active {
+  color: #fff !important;
+}
+.sidebar .nav-link:hover {
+  color: #f8f9fa !important;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+  color: inherit;
+}
+
+.sidebar-heading {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+/*
+* Navbar
+*/
+
+.navbar-brand {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, 0.25);
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.25);
+}
+
+.navbar .navbar-toggler {
+  top: 0.25rem;
+  right: 1rem;
+}
+
+.navbar .form-control {
+  padding: 0.75rem 1rem;
+  border-width: 0;
+  border-radius: 0;
+}
+
+.form-control-dark {
+  color: #fff !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.form-control-dark:focus {
+  border-color: transparent !important;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25) !important;
+}
+.navbar-nav {
+  flex-direction: row !important;
+}
+.admin-dropdown .dropdown-toggle::after {
+  color: #fff;
+}
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.nav-link:focus {
+  color: #fff;
 }
