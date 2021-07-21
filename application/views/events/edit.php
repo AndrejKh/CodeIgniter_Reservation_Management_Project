@@ -1,35 +1,31 @@
-<div class="row">
-  <div class="col-md-8 offset-md-2">
+<div class="row pt-5">
+  <div class="col-md-6 offset-md-3 event-form">
     <h2><?= $title; ?></h2>
 
     <?php echo validation_errors(); ?>
 
-    <?php echo form_open_multipart('request/update'); ?>
-
-    <div class="form-group">
-      <label>ID</label>
-      <input type="text" class="form-control" value="<?= $request['id'] ?>" name="reqID" readonly placeholder="Add ID">
-    </div>
-    <div class="form-group">
+    <?php echo form_open_multipart('events/update/' . $event['idevents'], ['id' => 'requestForm']); ?>
+    <div class="form-group mb-3">
       <label>Email</label>
-      <input type="email" readonly value="<?= $request['email'] ?>" class="form-control" name="email" placeholder="Add email">
+      <input type="datetime-local" class="form-control" id="date" required value="<?= $event['date'] ?>" name="date" placeholder="Add date">
     </div>
-    <div class="form-group">
-      <label>Username</label>
-      <input type="text" readonly value="<?= $request['name'] ?>" class="form-control" name="username" placeholder="Add username">
-    </div>
-    <div class="form-group">
-      <label>Referer</label>
-      <input type="text" readonly value="<?= $request['referer'] ?>" class="form-control" name="referer" placeholder="Add username">
-    </div>
-    <div class="form-group">
-      <label>Text</label>
-      <textarea type="text" readonly value="" class="form-control" name="req-text"><?= $request['text'] ?></textarea>
-    </div>
-    <div class="form-group">
 
-      <label>Urls</label>
-      <textarea type="text" value="" class="form-control" required name="req-urls" rows="5"><?= $request['urls'] ?></textarea>
+    <div class="form-group mb-3">
+      <label>Guests</label>
+      <input type="text" class="form-control" value="<?= $event['guest'] ?>" required name="guest" placeholder="Add guest">
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Ticket Price</label>
+      <input type="text" class="form-control" value="<?= $event['ticket_price'] ?>" required name="ticket_price" placeholder="Add price">
+    </div>
+
+    <div class="mb-3">
+      <label for="formFile" class="form-label">Image</label>
+      <input class="form-control" type="file" id="image" name="image">
+    </div>
+    <div class="mb-3">
+      <img src="<?= base_url() ?>/assets/images/events/<?= $event['image'] ?>" class="card-img" style="height: 80px;object-fit: cover;width: 150px;" alt="..."></td>
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>

@@ -3,11 +3,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 $route['events/list'] = 'events/list';
 $route['events/create'] = 'events/create';
-$route['events/update'] = 'events/update';
+$route['events/update/(:any)'] = 'events/update/$1';
 $route['events/(:any)'] = 'events/view/$1';
 $route['events/(:any)/reservations'] = 'events/reservations/$1';
-$route['reservations/create'] = 'reservations/create';
-$route['reservations/submit/(:any)'] = 'reservations/submit_to_admin/$1';
+$route['reservations/create/(:any)'] = 'reservations/create/$1';
+$route['reservations/update/(:any)'] = 'reservations/update/$1';
 $route['reservations/list-submited/(:any)'] = 'reservations/user_submited_list/$1';
 $route['reservations/edit/(:any)'] = 'reservations/edit/$1';
 $route['reservation/(:any)'] = 'reservations/get/$1';

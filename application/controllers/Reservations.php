@@ -46,17 +46,20 @@ class Reservations extends CI_Controller
 	{
 		$data['title'] = 'Submit Request';
 
-		$this->form_validation->set_rules('username', 'Username', 'required');
+		$this->form_validation->set_rules('name', 'Name', 'required');
+		$this->form_validation->set_rules('last_name', 'Lastname', 'required');
+		$this->form_validation->set_rules('name', 'Name', 'required');
 		$this->form_validation->set_rules('email', 'Email', 'required');
-		$this->form_validation->set_rules('req-text', 'Req text', 'required');
-		$this->form_validation->set_rules('referer', 'Referer', 'required');
+		$this->form_validation->set_rules('phone_nr', 'phone', 'required');
+		$this->form_validation->set_rules('total_persons', 'Total Persons', 'required');
+		// $this->form_validation->set_rules('payment_status', 'Payment status', 'required');
 
 		if ($this->form_validation->run() === FALSE) {
 			$this->load->view('templates/header');
-			$this->load->view('packages/create', $data);
+			$this->load->view('reservations/create', $data);
 			$this->load->view('templates/footer');
 		} else {
-			$this->request_model->create_request();
+			$this->reservation_model->add_reservation($this->uri->segment(3));
 			// Set message
 			header("Refresh:0");
 		}
@@ -103,12 +106,12 @@ class Reservations extends CI_Controller
 	public function delete($id)
 	{
 
-		$this->request_model->delete_requests($id);
+		$this->reservation_model->delete_reservation($id);
 
 		// Set message
-		$this->session->set_flashdata('post_deleted', 'Your request has been deleted');
+		$this->session->set_flashdata('post_deleted', 'Your reservation has been deleted');
 
-		redirect('request/list');
+		redirect('request/list-submited/' . $this->input->post('form_id'));
 	}
 
 	public function delete_user_request($id)
@@ -129,7 +132,7 @@ class Reservations extends CI_Controller
 		$data['reservation']	= $this->reservation_model->get_reservation($id);
 
 		$this->load->view('templates/header');
-		$this->load->view('reservation/index', $data);
+		$this->load->view('reservations/index', $data);
 		$this->load->view('templates/footer');
 	}
 
@@ -162,33 +165,7 @@ class Reservations extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
-	public function admin_forms_list()
-	{
-		$config = Reservations::get_pagination_config();
-		$config["base_url"] = base_url() . "request/list-admin";
-		$config["total_rows"] = $this->request_model->count_admin_forms()['COUNT(*)'];
-		$this->pagination->initialize($config);
-		$offset = ($this->input->get('page')) ? (($this->input->get('page') - 1) * $config["per_page"]) : 0;
-		$data["links"] = $this->pagination->create_links();
-		$data['formsList'] = $this->request_model->get_admin_forms($config["per_page"], $offset, 1);
-		$this->load->view('templates/header');
-		$this->load->view('packages/admin_forms_list', $data);
-		$this->load->view('templates/footer');
-	}
 
-	public function user_submited_list($form_id)
-	{
-		$config = Reservations::get_pagination_config();
-		$config["base_url"] = base_url() . "request/list-submited/" . $form_id;
-		$config["total_rows"] = $this->request_model->count_user_requests($form_id)['req_nr'];
-		$this->pagination->initialize($config);
-		$offset = ($this->input->get('page')) ? (($this->input->get('page') - 1) * $config["per_page"]) : 0;
-		$data["links"] = $this->pagination->create_links();
-		$data['requestsList'] = $this->request_model->get_user_requests($form_id, $config["per_page"], $offset);
-		$this->load->view('templates/header');
-		$this->load->view('packages/user_request_list', $data);
-		$this->load->view('templates/footer');
-	}
 
 	public function list_completed()
 	{
@@ -204,19 +181,7 @@ class Reservations extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
-	public function list_by_ip($ip)
-	{
 
-		$config = Reservations::get_pagination_config();
-		$config["total_rows"] = $this->request_model->get_count_by_ip($ip)['COUNT(*)'];
-		$this->pagination->initialize($config);
-		$offset = ($this->input->get('page')) ? (($this->input->get('page') - 1) * $config["per_page"]) : 0;
-		$data["links"] = $this->pagination->create_links();
-		$data['requestsList'] = $this->request_model->get_requests_by_ip($ip, $config["per_page"], $offset);
-		$this->load->view('templates/header');
-		$this->load->view('packages/list', $data);
-		$this->load->view('templates/footer');
-	}
 
 	public function edit($slug)
 	{
@@ -235,15 +200,31 @@ class Reservations extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
-	public function update()
+	public function update($id)
 	{
+		$data['title'] = 'Submit Request';
+		$event_id = $this->uri->segment(3);
 
-		$this->request_model->update_request();
+		$this->form_validation->set_rules('name', 'Name', 'required');
+		$this->form_validation->set_rules('last_name', 'Lastname', 'required');
+		$this->form_validation->set_rules('name', 'Name', 'required');
+		$this->form_validation->set_rules('email', 'Email', 'required');
+		$this->form_validation->set_rules('phone_nr', 'phone', 'required');
+		$this->form_validation->set_rules('total_persons', 'Total Persons', 'required');
 
-		// Set message
-		$this->session->set_flashdata('post_updated', 'Your request has been updated');
+		if ($this->form_validation->run() === FALSE) {
+			$data['reservation'] = $this->reservation_model->get_reservation($event_id);
+			$this->load->view('templates/header');
+			$this->load->view('reservations/edit', $data);
+			$this->load->view('templates/footer');
+		} else {
+			$this->reservation_model->update_reservation($id);
 
-		redirect('request/list');
+			// Set message
+			$this->session->set_flashdata('post_updated', 'Your reservation has been updated');
+
+			header("Refresh:0");
+		}
 	}
 
 	public function	request_submited()

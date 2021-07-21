@@ -60,12 +60,12 @@ class Event_model extends CI_Model
 	{
 		$this->db->select('*');
 		$query = $this->db->get_where('events', array('idevents' => $id));
-		return $query->result_array();
+		return $query->result_array()[0];
 	}
 
 	public function get_events($limit, $start)
 	{
-		$this->db->select('*');
+		$this->db->select('*,(select sum(total_persons)  from reservations where event_id=events.idevents ) as total_ticket');
 		$this->db->limit($limit, $start);
 		$query = $this->db->get('events');
 		return	$query->result_array();
@@ -177,10 +177,10 @@ class Event_model extends CI_Model
 	}
 
 
-	public function delete_requests($id)
+	public function delete_event($id)
 	{
-		$this->db->where('id', $id);
-		$this->db->delete('requests');
+		$this->db->where('idevents', $id);
+		$this->db->delete('events');
 		return true;
 	}
 
@@ -193,27 +193,19 @@ class Event_model extends CI_Model
 	}
 
 
-	public function update_request()
+	public function update_events($id, $img)
 	{
 
-		$data = array(
-			'id' => $this->input->post('reqID'),
-			'name' => $this->input->post('username'),
-			'email' => $this->input->post('email'),
-			'text' => $this->input->post('req-text'),
-			'referer' => $this->input->post('referer'),
-			'urls' => $this->input->post('req-urls'),
-			'completed' => 1
-		);
+		$date = new DateTime($this->input->post('date'));
+		$data['event']['date'] = $date->format('Y/m/d H:i:s');
 
-		$this->db->update('requests', $data, array('id' => $data['id']));
-		$message = 'Request ID: ' . $data['id'] . '<br>';
-		$message .= 'Name: ' . $data['name'] . '<br>';
-		$message .= 'Email: ' . $data['email'] . '<br>';
-		$message .= 'From referer: ' . $data['referer'] . '<br><br>';
-		$message .= $data['urls'];
-		$message .=  '<br><br>';
-		Event_model::send_email($data['email'], $data['name'], $message, 'URL from xenupload');
+		$data = array(
+			'date' => $this->input->post('date'),
+			'guest' => $this->input->post('guest'),
+			'image' => $img,
+			'ticket_price' => $this->input->post('ticket_price'),
+		);
+		$this->db->update('events', $data, array('idevents' => $id));
 	}
 
 

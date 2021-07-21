@@ -73,22 +73,53 @@ class Events extends CI_Controller
 			header("Refresh:0");
 		}
 	}
+	public function update($id)
+	{
+
+		$data['title'] = 'Submit Request';
+
+		$this->form_validation->set_rules('guest', 'Guest', 'required');
+		$this->form_validation->set_rules('date', 'Date', 'required');
+		$this->form_validation->set_rules('ticket_price', 'Ticket price', 'required');
+		if ($this->form_validation->run() === FALSE) {
+			$data['event'] = $this->event_model->get_event_by_id($id);
+			$date = new DateTime($data['event']['date']);
+			$data['event']['date'] =	substr($date->format(DateTime::ATOM), 0, 16); // Updated ISO8601	
+			$this->load->view('templates/header');
+			$this->load->view('events/edit', $data);
+			$this->load->view('templates/footer');
+		} else {
+			// Upload Image
+			$config['upload_path'] = './assets/images/events';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+			$config['max_size'] = '2048';
+			$config['max_width'] = '2000';
+			$config['max_height'] = '2000';
+
+			$this->load->library('upload', $config);
+
+			if (!$this->upload->do_upload('image')) {
+				$errors = array('error' => $this->upload->display_errors());
+				$post_image = 'noimage.jpg';
+			} else {
+				$data = array('upload_data' => $this->upload->data());
+				$post_image = $_FILES['image']['name'];
+			}
+			$this->event_model->update_events($id, $post_image);
+			// Set message
+			header("Refresh:0");
+		}
+	}
 
 
 	public function reservations($id)
 	{
 
-		$data['reservations'] = $this->reservation_model->get_reservations_for_event($id, 0, 10);
+		$data['reservationList'] = $this->reservation_model->get_reservations_for_event($id, 0, 10);
 
-		if ($this->form_validation->run() === FALSE) {
-			$this->load->view('templates/header');
-			$this->load->view('reservations/list', $data);
-			$this->load->view('templates/footer');
-		} else {
-			$this->request_model->create_request_by_admin();
-			// Set message
-			header("Refresh:0");
-		}
+		$this->load->view('templates/header');
+		$this->load->view('reservations/list', $data);
+		$this->load->view('templates/footer');
 	}
 
 	public function list()
@@ -128,12 +159,12 @@ class Events extends CI_Controller
 	public function delete($id)
 	{
 
-		$this->request_model->delete_requests($id);
+		$this->event_model->delete_event($id);
 
 		// Set message
-		$this->session->set_flashdata('post_deleted', 'Your request has been deleted');
+		$this->session->set_flashdata('post_deleted', 'Your event has been deleted');
 
-		redirect('request/list');
+		redirect('events/list');
 	}
 
 

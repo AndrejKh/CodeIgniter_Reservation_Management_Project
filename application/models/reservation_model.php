@@ -18,7 +18,7 @@ class Reservation_model extends CI_Model
         $this->db->select('*');
         $this->db->where('idreservations', $id);
         $query = $this->db->get('reservations');
-        return    $query->result_array();
+        return    $query->result_array()[0];
     }
 
 
@@ -33,46 +33,52 @@ class Reservation_model extends CI_Model
     public function get_reservations_for_event($event_id, $limit, $start)
     {
         $this->db->select('*');
-        $this->db->limit($limit, $start);
+        $this->db->limit($start, $limit);
         $this->db->where('event_id', $event_id);
         $query = $this->db->get('reservations');
         return    $query->result_array();
     }
 
+    public function delete_reservation($id)
+    {
+        $this->db->where('idreservations', $id);
+        $this->db->delete('reservations');
+    }
 
     public function add_reservation($event_id)
     {
         $uniqid = 'RE' . uniqid();
 
+        $payment = $this->input->post('payment_status') === 'on' ? 1 : 0;
+
         $data = array(
             'idreservations' => $uniqid,
             'name' => $this->input->post('name'),
-            'lastname' => $this->input->post('lastname'),
+            'lastname' => $this->input->post('last_name'),
             'email' => $this->input->post('email'),
             'phone_nr' => $this->input->post('phone_nr'),
             'total_persons' => $this->input->post('total_persons'),
-            'payment_status' => $this->input->post('payment_status'),
+            'payment_status' => $payment,
             'event_id' => $event_id,
         );
-        $this->db->insert('admin_forms', $data);
-        $this->session->set_flashdata('post_created', 'Your request has been created share this url: <a href="' . base_url() . 'request/submit/' . $data['id'] . '" >' . base_url() . 'request/submit/' . $data['id'] . '</a>');
+        $this->db->insert('reservations', $data);
+        $this->session->set_flashdata('post_created', 'Your reservation has been created');
     }
 
 
-    public function update_reservation($event_id)
+    public function update_reservation($id)
     {
+        $payment = $this->input->post('payment_status') === 'on' ? 1 : 0;
 
         $data = array(
-            'idreservations' => $this->input->post('id'),
             'name' => $this->input->post('name'),
-            'lastname' => $this->input->post('lastname'),
+            'lastname' => $this->input->post('last_name'),
             'email' => $this->input->post('email'),
             'phone_nr' => $this->input->post('phone_nr'),
             'total_persons' => $this->input->post('total_persons'),
-            'payment_status' => $this->input->post('payment_status'),
-            'event_id' => $event_id,
+            'payment_status' => $payment,
         );
-        $this->db->update('admin_forms', $data, ['idreservattion' => $data['id']]);
-        $this->session->set_flashdata('post_created', 'Your request has been created share this url: <a href="' . base_url() . 'request/submit/' . $data['id'] . '" >' . base_url() . 'request/submit/' . $data['id'] . '</a>');
+        $this->db->update('reservations', $data, ['idreservations' => $id]);
+        $l = $this->db->last_query();
     }
 }
