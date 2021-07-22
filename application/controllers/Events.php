@@ -112,6 +112,8 @@ class Events extends CI_Controller
 					$data = array('upload_data' => $this->upload->data());
 					$post_image =	$config['file_name'];
 				}
+			} else {
+				$post_image = '';
 			}
 
 			$this->event_model->update_events($id, $post_image);
