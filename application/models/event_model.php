@@ -101,15 +101,11 @@ class Event_model extends CI_Model
 		return true;
 	}
 
-	public function get_user_requests($form_id, $limit, $start)
+	public function get_event_iamge($event_id)
 	{
-		$this->db->select('user_requests.id as user_req_id, username,email,referer,urls,ip,completed,admin_forms.id as form_id ');
-		$this->db->from('user_requests');
-		$this->db->join('admin_forms', 'admin_forms.id = user_requests.form_id');
-		$this->db->limit($limit, $start);
-		$this->db->where('form_id', $form_id);
-		$this->db->where('completed', 0);
-		$query = $this->db->get();
+		$this->db->select('image');
+		$this->db->where('idevents', $event_id);
+		$query = $this->db->get('events');
 		return $query->result_array();
 	}
 

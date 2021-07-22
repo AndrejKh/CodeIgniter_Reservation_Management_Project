@@ -10,23 +10,12 @@ class Events extends CI_Controller
 		if (!$this->session->userdata('logged_in')) {
 			redirect('users/login');
 		}
+
+		$this->load->helper('utils');
 		$this->load->helper('url', 'form');
 		$this->load->library("pagination");
 	}
-	public function index()
-	{
-		// Pagination Config	
-		$config['base_url'] = base_url() . 'request/index/';
-		$config['per_page'] = 3;
-		$config['uri_segment'] = 3;
-		$config['attributes'] = array('class' => 'pagination-link');
 
-		$data = [];
-
-		$this->load->view('templates/header');
-		$this->load->view('packages/index', $data);
-		$this->load->view('templates/footer');
-	}
 
 	public function view($id)
 	{
@@ -135,7 +124,7 @@ class Events extends CI_Controller
 
 	public function list()
 	{
-		$config = Events::get_pagination_config();
+		$config = get_pagination_config();
 		$config["base_url"] = base_url() . "events/list";
 		$config["total_rows"] = $this->event_model->count_events()['COUNT(*)'];
 		$this->pagination->initialize($config);
@@ -148,25 +137,6 @@ class Events extends CI_Controller
 	}
 
 
-
-	public function submit_to_admin()
-	{
-		$data['form'] = $this->request_model->get_admin_forms_by_id($this->uri->segment('3'));
-		$data['title'] = 'Submit Request for ' . $data['form'][0]['form_title'] . ' form';
-		$this->form_validation->set_rules('username', 'Username', 'required');
-		$this->form_validation->set_rules('email', 'Email', 'required');
-
-		if ($this->form_validation->run() === FALSE) {
-			$this->load->view('templates/header');
-			$this->load->view('packages/submit_to_admin', $data);
-			$this->load->view('templates/footer');
-		} else {
-			$this->request_model->submit_to_admin();
-			// Set message
-			redirect('/request/submit/' . $this->input->post('reqID'));
-		}
-	}
-
 	public function delete($id)
 	{
 
@@ -176,37 +146,5 @@ class Events extends CI_Controller
 		$this->session->set_flashdata('post_deleted', 'Your event has been deleted');
 
 		redirect('events/list');
-	}
-
-
-	public static function get_pagination_config()
-	{
-		$config = array();
-		$config['full_tag_open'] = '<nav> <ul class="pagination justify-content-center">';
-		$config['full_tag_close'] = '</ul> </nav>';
-		$config["per_page"] = 20;
-		$config['enable_query_strings'] = TRUE;
-		$config['page_query_string'] = TRUE;
-		$config['use_page_numbers'] = TRUE;
-		$config['reuse_query_string'] = TRUE;
-		$config['query_string_segment'] = 'page';
-		$config['first_url'] = '?page=1';
-		$config['first_tag_open'] = '<li class="page-item">';
-		$config['first_tag_close'] = '</li>';
-		$config['prev_link'] = '&laquo';
-		$config['prev_tag_open'] = '<li class="page-item prev">';
-		$config['prev_tag_close'] = '</li>';
-		$config['next_link'] = '&raquo';
-		$config['next_tag_open'] = '<li class="page-item">';
-		$config['next_tag_close'] = '</li>';
-		$config['last_tag_open'] = '<li class="page-item">';
-		$config['last_tag_close'] = '</li>';
-		$config['cur_tag_open'] = '<li class="page-item active"><a class="page-link">';
-		$config['cur_tag_close'] = '</a></li>';
-		$config['num_tag_open'] = '<li class="page-item">';
-		$config['num_tag_close'] = '</li>';
-		$config['attributes'] = array('class' => 'page-link');
-
-		return $config;
 	}
 }
