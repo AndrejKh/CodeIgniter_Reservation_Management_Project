@@ -29,7 +29,7 @@
 
         <div class="form-group mb-3">
             <label>Total persons </label>
-            <input type="number" class="form-control" required name="total_persons" placeholder="Add total">
+            <input type="number" class="form-control" required name="total_persons" placeholder="Add total" min="1">
         </div>
 
 
