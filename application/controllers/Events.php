@@ -58,6 +58,8 @@ class Events extends CI_Controller
 			$config['max_size'] = '2048';
 			$config['max_width'] = '2000';
 			$config['max_height'] = '2000';
+			$config['file_name'] = 'img-event-' . time();
+
 
 			$this->load->library('upload', $config);
 
@@ -101,6 +103,7 @@ class Events extends CI_Controller
 			if (!$this->upload->do_upload('image')) {
 				$errors = array('error' => $this->upload->display_errors());
 				$post_image = 'noimage.jpg';
+				$this->session->set_flashdata('post_deleted', 'Your image was not uploaded!');
 			} else {
 				$data = array('upload_data' => $this->upload->data());
 				$post_image = $_FILES['image']['name'];
