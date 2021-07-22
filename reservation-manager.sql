@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2021 at 04:33 PM
+-- Generation Time: Jul 22, 2021 at 01:18 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -44,8 +44,13 @@ INSERT INTO `events` (`idevents`, `date`, `guest`, `image`, `ticket_price`) VALU
 ('EV60f141d5adb81', '2021-06-30 02:25:00', 'j3', '1c8f44815997be7cc57bed9f0e0185d0.jpg', 234),
 ('EV60f14323a33ef', '2021-07-16 00:28:00', 'aggdfgb', 'cover.jpg', 234),
 ('EV60f143819ec82', '2021-07-16 01:29:00', 'aggdfgb', 'ba_cklit.jpg', 456),
-('EV60f14b1d6d1f2', '2021-07-16 11:04:00', 'aggdfgb', 'trust.png', NULL),
-('EV60f546b6d3eb3', '2021-07-06 11:34:00', 'aggdfgb', 'noimage.jpg', 123);
+('EV60f14b1d6d1f2', '2021-07-16 11:04:00', 'aggdfgb', 'img-event-1626944138.png', 456),
+('EV60f546b6d3eb3', '2021-07-06 11:34:00', 'aggdfgb', 'noimage.jpg', 123),
+('EV60f922d67913a', '2021-07-23 11:48:00', 'johan', 'noimage.jpg', 234),
+('EV60f9231bc7fb8', '2021-07-22 11:49:00', 'johan', 'noimage.jpg', 456),
+('EV60f9238d8b616', '2021-07-05 09:51:00', 'johan', 'skrill.png', 456),
+('EV60f928aca4ba5', '2021-07-19 10:12:00', 'johan', 'img-event-1626941566png', 234),
+('EV60f928ed6a42e', '2021-06-29 10:14:00', 'aggdfgb', 'img-event-1626943795.png', 234);
 
 -- --------------------------------------------------------
 
@@ -61,20 +66,34 @@ CREATE TABLE `reservations` (
   `email` varchar(100) NOT NULL,
   `total_persons` int(5) NOT NULL,
   `payment_status` tinyint(4) NOT NULL,
-  `event_id` varchar(50) NOT NULL
+  `event_id` varchar(50) NOT NULL,
+  `qr_image` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `reservations`
 --
 
-INSERT INTO `reservations` (`idreservations`, `name`, `lastname`, `phone_nr`, `email`, `total_persons`, `payment_status`, `event_id`) VALUES
-('RE60f801c32e6cc', 'sony  headphones', 'uyt', '2147483647', 'nimilap650@labebx.com', 7, 0, 'EV60f143819ec82'),
-('RE60f8042ff3007', 'aa', 'uytjhfh', '2147483647', 'saded82633@whipjoy.com', 4, 0, 'EV60f143819ec82'),
-('RE60f8046ddd6de', 'sony  headphones', 'uyt', '2147483647', 'saded82633@whipjoy.com', 3, 0, 'EV60f143819ec82'),
-('RE60f804a9793c4', 'sony  headphones', 'uyt', '2147483647', 'saded82633@whipjoy.com', 1, 1, 'EV60f143819ec82'),
-('RE60f805179f31d', 'aa updated', 'uytjhfh updated', '12589999', 'updated@labebx.com', 34, 1, 'EV60f143819ec82'),
-('RE60f80530f12d0', 'beast  headphones', 'uyt', '2147483647', 'saded82633@whipjoy.com', 4, 0, 'EV60f14323a33ef');
+INSERT INTO `reservations` (`idreservations`, `name`, `lastname`, `phone_nr`, `email`, `total_persons`, `payment_status`, `event_id`, `qr_image`) VALUES
+('RE60f8046ddd6de', 'sony  headphones', 'uyt', '2147483647', 'saded82633@whipjoy.com', 3, 0, 'EV60f143819ec82', NULL),
+('RE60f804a9793c4', 'sony  headphones', 'uyt', '2147483647', 'saded82633@whipjoy.com', 1, 1, 'EV60f143819ec82', NULL),
+('RE60f805179f31d', 'aa updated', 'uytjhfh updated', '12589999', 'updated@labebx.com', 34, 1, 'EV60f143819ec82', NULL),
+('RE60f93615649c5', 'aa', 'uyt', '13265978624164', 'saded82633@whipjoy.com', 3, 0, 'EV60f143819ec82', NULL),
+('RE60f9370bdb518', 'aa', 'uyt', '13265978624164', 'saded82633@whipjoy.com', 3, 0, 'EV60f143819ec82', NULL),
+('RE60f9382fac54b', 'aa', 'uyt', '13265978624164', 'saded82633@whipjoy.com', 3, 0, 'EV60f143819ec82', NULL),
+('RE60f93c78d120c', 'beast  headphones', 'uytjhfh', '111111111111', 'saded82633@whipjoy.com', 545, 1, 'EV60f143819ec82', NULL),
+('RE60f93d136cbc3', 'aa', 'uytjhfh', '13265978624164', 'nimilap650@labebx.com', 5565, 1, 'EV60f143819ec82', NULL),
+('RE60f941f1dcf45', 'beast  headphones', 'uytjhfh', '21474836473', 'saded82633@whipjoy.com', 55, 1, 'EV60f143819ec82', NULL),
+('RE60f9433cafec7', 'beast  headphones', 'uytjhfh', '21474836473', 'saded82633@whipjoy.com', 55, 1, 'EV60f143819ec82', 'assets/media/qrcode/qr-reservationRE60f9433cafec7.png'),
+('RE60f94d514bcb5', 'sony  headphones', 'uytjhfh', '111111111111', 'motiyag921@activesniper.com', 4, 0, 'EV60f1346c83ae3', 'assets/media/qrcode/qr-reservationRE60f94d514bcb5.png'),
+('RE60f94dc271303', 'sony  headphones', 'uyt', '13265978624164', 'saded82633@whipjoy.com', 5, 1, 'EV60f1346c83ae3', 'assets/media/qrcode/qr-reservationRE60f94dc271303.png'),
+('RE60f94eddb1733', 'sony  headphones', 'uytjhfh', '13265978624164', 'saded82633@whipjoy.com', 25, 1, 'EV60f1346c83ae3', 'assets/media/qrcode/qr-reservationRE60f94eddb1733.png'),
+('RE60f94f06077e0', 'aa', 'uyt', '13265978624164', 'motiyag921@activesniper.com', 4, 0, 'EV60f1346c83ae3', 'assets/media/qrcode/qr-reservationRE60f94f06077e0.png'),
+('RE60f94f7fed581', 'sony  headphones', 'uyt', '13265978624164', 'motiyag921@activesniper.com', 1, 1, 'EV60f14323a33ef', 'assets/media/qrcode/qr-reservationRE60f94f7fed581.png'),
+('RE60f94fac20a86', 'sony  headphones', 'uytjhfh', '13265978624164', 'motiyag921@activesniper.com', 3, 0, 'EV60f14323a33ef', 'assets/media/qrcode/qr-reservationRE60f94fac20a86.png'),
+('RE60f9505ea22cb', 'sony  headphones', 'uytjhfh', '21474836473', 'nimilap650@labebx.com', 25, 0, 'EV60f14323a33ef', 'assets/media/qrcode/qr-reservationRE60f9505ea22cb.png'),
+('RE60f9508238c9c', 'sony  headphones', 'uytjhfh', '13265978624164', 'motiyag921@activesniper.com', 12, 0, 'EV60f14323a33ef', 'assets/media/qrcode/qr-reservationRE60f9508238c9c.png'),
+('RE60f95261a0cd7', 'sony  headphones', 'uyt', '13265978624164', 'motiyag921@activesniper.com', 3, 1, 'EV60f1346c83ae3', 'assets/media/qrcode/qr-reservationRE60f95261a0cd7.png');
 
 -- --------------------------------------------------------
 
