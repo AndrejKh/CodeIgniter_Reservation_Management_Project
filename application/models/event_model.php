@@ -196,15 +196,17 @@ class Event_model extends CI_Model
 	public function update_events($id, $img)
 	{
 
-		$date = new DateTime($this->input->post('date'));
-		$data['event']['date'] = $date->format('Y/m/d H:i:s');
-
 		$data = array(
 			'date' => $this->input->post('date'),
 			'guest' => $this->input->post('guest'),
-			'image' => $img,
+			// 'image' => $img,
 			'ticket_price' => $this->input->post('ticket_price'),
 		);
+
+		if ($img) {
+			$data['image'] = $img;
+		}
+
 		$this->db->update('events', $data, array('idevents' => $id));
 	}
 
