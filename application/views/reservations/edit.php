@@ -46,7 +46,7 @@
         </form>
         <?php echo form_open_multipart('reservations/delete/' . $reservation['idreservations'], ['id' => 'requestForm']); ?>
         <input type="hidden" name="event_id" value="<?= $reservation['event_id'] ?>">
-        <input type="submit" href="<?= base_url() ?>" class="btn btn-danger" value="Delete" style="float:right">
+        <input type="submit" href="<?= base_url() ?>" class="btn btn-danger" value="Delete" style="float:right; margin-top: -38px;">
         </form>
     </div>
 </div>
