@@ -118,6 +118,7 @@ class Events extends CI_Controller
 
 			$this->event_model->update_events($id, $post_image);
 			// Set message
+			$this->session->set_flashdata('post_deleted', 'Your event has been edited');
 			header("Refresh:0");
 		}
 	}
