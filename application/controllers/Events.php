@@ -42,7 +42,7 @@ class Events extends CI_Controller
 	public function create()
 	{
 
-		$data['title'] = 'Submit Request';
+		$data['title'] = 'Add Event';
 
 		$this->form_validation->set_rules('guest', 'Guest', 'required');
 		$this->form_validation->set_rules('date', 'Date', 'required');
@@ -76,7 +76,7 @@ class Events extends CI_Controller
 	public function update($id)
 	{
 
-		$data['title'] = 'Submit Request';
+		$data['title'] = 'Edit Event';
 
 		$this->form_validation->set_rules('guest', 'Guest', 'required');
 		$this->form_validation->set_rules('date', 'Date', 'required');

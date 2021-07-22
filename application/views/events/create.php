@@ -1,6 +1,6 @@
 <div class="row pt-5">
   <div class="col-md-6 offset-md-3 event-form">
-    <h2 class="text-center fw-bold"><?= $title; ?></h2>
+    <h4 class="fw-bold mb-3"><?= $title; ?></h4>
 
     <?php echo validation_errors(); ?>
 

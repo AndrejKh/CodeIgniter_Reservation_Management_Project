@@ -39,8 +39,8 @@
                 Payed
             </label>
         </div>
-        <a href="reservations/update/' <?= $reservation['idreservations'] ?> " class="btn btn-danger"> Delete</a>
         <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="reservations/update/' <?= $reservation['idreservations'] ?> " class="btn btn-danger" style="float:right"> Delete</a>
         </form>
     </div>
 </div>

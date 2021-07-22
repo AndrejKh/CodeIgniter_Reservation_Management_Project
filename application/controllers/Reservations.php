@@ -44,7 +44,7 @@ class Reservations extends CI_Controller
 
 	public function create()
 	{
-		$data['title'] = 'Submit Request';
+		$data['title'] = 'Add Reservation';
 
 		$this->form_validation->set_rules('name', 'Name', 'required');
 		$this->form_validation->set_rules('last_name', 'Lastname', 'required');
@@ -202,7 +202,7 @@ class Reservations extends CI_Controller
 
 	public function update($id)
 	{
-		$data['title'] = 'Submit Request';
+		$data['title'] = 'Edit Reservation';
 		$event_id = $this->uri->segment(3);
 
 		$this->form_validation->set_rules('name', 'Name', 'required');

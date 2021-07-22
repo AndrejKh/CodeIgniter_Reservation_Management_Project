@@ -50,21 +50,20 @@
                   <a class="nav-link text-secondary" href="<?php echo base_url() .
                                                               'events/list' ?>">
                     <span data-feather="file"></span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file" aria-hidden="true">
-                      <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
-                      <polyline points="13 2 13 9 20 9"></polyline>
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16" style="margin-right: 4px;">
+  <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+  <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+</svg>
                     Events
                   </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link text-secondary" href="<?php echo base_url(); ?>events/create">
                     <span data-feather="shopping-cart"></span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart" aria-hidden="true">
-                      <circle cx="9" cy="21" r="1"></circle>
-                      <circle cx="20" cy="21" r="1"></circle>
-                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-plus" viewBox="0 0 16 16" style="margin-right: 4px">
+  <path d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z"/>
+  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+</svg> 
                     Add events
                   </a>
                 </li>
@@ -84,15 +83,16 @@
             <div class="pb-4">
               <hr style="color: #fff">
               <div class="dropdown admin-dropdown">
-                <a href="#" class="btn dropdown-toggle py-0" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                  <strong style="color: #fff">mdo</strong>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-                  <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/logout">Logout</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                </ul>
-              </div>
+              <a href="#" class="btn dropdown-toggle py-0" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <!-- <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"> -->
+                <strong class="text-white"><?= $this->session->userdata('username'); ?></strong>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/logout">Logout</a></li>
+                <!-- <li><a class="dropdown-item" href="#">Another action</a></li> -->
+              </ul>
+      </div>
+            
             </div>
           </div>
       </div>
