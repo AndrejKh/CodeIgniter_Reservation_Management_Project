@@ -200,7 +200,7 @@
                                             <div align="center" class="img-container center autowidth" style="padding-right: 0px; padding-left: 0px">
 
                                                 <div>
-                                                    <img src="https://img.freepik.com/free-vector/music-event-poster-template-with-abstract-shapes_1361-1316.jpg?size=626&ext=jpg&ga=GA1.2.2002087936.1626480000" style="width: 100%" />
+                                                    <img src="<?= base_url() . $event_image ?>" style="width: 100%" />
                                                 </div>
 
                                             </div>
@@ -441,7 +441,7 @@
                                 margin-top: 0;
                                 margin-bottom: 0;
                               ">
-                                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png" style="width: 100%" />
+                                                        <img src="<?= base_url() . $qr_image ?>" style="width: 100%" />
                                                     </p>
                                                 </div>
                                             </div>
