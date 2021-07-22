@@ -78,7 +78,7 @@ $db['default'] = array(
 	'hostname' => 'localhost',
 	'username' => (ENVIRONMENT !== 'production') ? 'root' : 'jdh',
 	'password' => (ENVIRONMENT !== 'production') ? '' : 'N6i?cr33',
-	'database' => (ENVIRONMENT !== 'production') ? 'admin-reservation-manager' : 'admin_request',
+	'database' => (ENVIRONMENT !== 'production') ? 'reservation-manager' : 'admin_reservation-manager',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
