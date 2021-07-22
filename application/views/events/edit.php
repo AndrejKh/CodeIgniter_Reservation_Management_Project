@@ -25,7 +25,7 @@
       <input class="form-control" type="file" id="image" name="image">
     </div>
     <div class="mb-3">
-      <img src="<?= base_url() ?>/assets/images/events/<?= $event['image'] ?>" class="card-img" style="height: 80px;object-fit: cover;width: 150px;" alt="..."></td>
+      <img src="<?= base_url() ?>assets/images/events/<?= $event['image'] ?>" class="card-img" style="height: 80px;object-fit: cover;width: 150px;" alt="..."></td>
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
