@@ -111,7 +111,7 @@ class Reservations extends CI_Controller
 		// Set message
 		$this->session->set_flashdata('post_deleted', 'Your reservation has been deleted');
 
-		redirect('request/list-submited/' . $this->input->post('form_id'));
+		redirect('events/' . $this->input->post('event_id') . '/reservations');
 	}
 
 	public function delete_user_request($id)
