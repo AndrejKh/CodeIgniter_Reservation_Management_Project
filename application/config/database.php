@@ -76,9 +76,9 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => (ENVIRONMENT !== 'production') ? 'root' : 'admin_request',
-	'password' => (ENVIRONMENT !== 'production') ? '' : 'Fj7w3*i8',
-	'database' => (ENVIRONMENT !== 'production') ? 'reservation-manager' : 'admin_request',
+	'username' => (ENVIRONMENT !== 'production') ? 'root' : 'jdh',
+	'password' => (ENVIRONMENT !== 'production') ? '' : 'N6i?cr33',
+	'database' => (ENVIRONMENT !== 'production') ? 'admin-reservation-manager' : 'admin_request',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
