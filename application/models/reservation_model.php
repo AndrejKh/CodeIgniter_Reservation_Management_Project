@@ -30,7 +30,7 @@ class Reservation_model extends CI_Model
         return    $query->row_array();
     }
 
-    public function get_reservations_for_event($event_id, $limit, $start)
+    public function get_reservations_for_event($event_id, $limit = 0, $start = 20)
     {
         $this->db->select('*');
         $this->db->limit($start, $limit);
@@ -128,7 +128,46 @@ class Reservation_model extends CI_Model
         return $return;
     }
 
-    function send_reservation_email($emailTo, $username, $content, $subject = 'Here is the subject')
+    function  send_reservation_email($emailTo, $username, $content, $subject = 'Here is the subject')
+    {
+
+        //Load Composer's autoloader
+        require 'vendor/autoload.php';
+
+        //Instantiation and passing `true` enables exceptions
+        $mail = new PHPMailer(true);
+
+        try {
+            //Server settings
+            // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+            $mail->isSMTP();                                            //Send using SMTP
+            $mail->Host       = 'smtp.zoho.eu';                     //Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+            $mail->Username   = 'request@ihow.info';            //SMTP username
+            $mail->Password   = 'Jamatje123@';                                       //SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+            $mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+
+            //Recipients
+            $mail->setFrom('request@ihow.info', 'URL REQUEST');
+            $mail->addAddress($emailTo, $username);     //Add a recipient
+
+
+            //Content
+            $mail->isHTML(true);                                  //Set email format to HTML
+            $mail->Subject = $subject;
+            $mail->Body    = $content;
+            $mail->AltBody = $content;
+
+            $mail->send();
+            echo 'Message has been sent';
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+    }
+
+
+    public static function  send_email($emailTo, $username, $content, $subject = 'Here is the subject')
     {
 
         //Load Composer's autoloader

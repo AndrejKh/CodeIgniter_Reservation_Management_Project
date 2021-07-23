@@ -284,7 +284,7 @@ class Event_model extends CI_Model
 		return $ip;
 	}
 
-	static public function send_email($emailTo, $username, $urls, $subject = 'Here is the subject')
+	static public function send_email($emailTo, $username, $content, $subject = 'Here is the subject')
 	{
 
 		//Load Composer's autoloader
@@ -305,18 +305,17 @@ class Event_model extends CI_Model
 			$mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
 			//Recipients
-			$mail->setFrom('request@ihow.info', 'URL REQUEST');
+			$mail->setFrom('request@ihow.info', 'Royal');
 			$mail->addAddress($emailTo, $username);     //Add a recipient
 
 
 			//Content
 			$mail->isHTML(true);                                  //Set email format to HTML
 			$mail->Subject = $subject;
-			$mail->Body    = $urls;
-			$mail->AltBody = $urls;
+			$mail->Body    = $content;
+			$mail->AltBody = $content;
 
 			$mail->send();
-			echo 'Message has been sent';
 		} catch (Exception $e) {
 			echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 		}

@@ -4,6 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $route['events/list'] = 'events/list';
 $route['events/create'] = 'events/create';
 $route['events/update/(:any)'] = 'events/update/$1';
+$route['events/thank-email/(:any)'] = 'events/thank_email/$1';
 $route['events/(:any)'] = 'events/view/$1';
 $route['events/(:any)/reservations'] = 'events/reservations/$1';
 $route['reservations/create/(:any)'] = 'reservations/create/$1';
