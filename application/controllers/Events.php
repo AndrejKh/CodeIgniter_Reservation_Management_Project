@@ -162,7 +162,8 @@ class Events extends CI_Controller
 		$reservations	= $this->reservation_model->get_reservations_for_event($id);
 		foreach ($reservations as $key => $reservation) {
 			$email_content = $this->load->view('email_template/thank', [], TRUE);
-			$this->event_model->send_email($reservation['email'], $reservation['name'], $email_content);
+			Event_model::send_email($reservation['email'], $reservation['name'], $email_content);
 		}
+		redirect('events/list');
 	}
 }

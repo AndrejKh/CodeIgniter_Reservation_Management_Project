@@ -30,7 +30,7 @@ class Reservation_model extends CI_Model
         return    $query->row_array();
     }
 
-    public function get_reservations_for_event($event_id, $limit = 0, $start = 20)
+    public function get_reservations_for_event($event_id, $limit = 20, $start = 0)
     {
         $this->db->select('*');
         $this->db->limit($limit, $start);
@@ -69,7 +69,7 @@ class Reservation_model extends CI_Model
         $email_data = array_merge($data, array('event_image' => $event_image));
         $email_content = $this->load->view('email_template/reservation', $email_data, TRUE);
         $this->send_reservation_email($data['email'], $data['name'] . $data['lastname'], $email_content);
-        $this->session->set_flashdata('post_created', 'Your reservation has been created');
+        $this->session->set_flashdata('created', 'Your reservation has been created');
     }
 
 

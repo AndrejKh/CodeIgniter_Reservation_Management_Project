@@ -49,7 +49,7 @@ class Reservations extends CI_Controller
 		$this->reservation_model->delete_reservation($id);
 
 		// Set message
-		$this->session->set_flashdata('post_deleted', 'Your reservation has been deleted');
+		$this->session->set_flashdata('created', 'Your reservation has been deleted');
 
 		redirect('events/' . $this->input->post('event_id') . '/reservations');
 	}
@@ -88,7 +88,7 @@ class Reservations extends CI_Controller
 			$this->reservation_model->update_reservation($id);
 
 			// Set message
-			$this->session->set_flashdata('post_updated', 'Your reservation has been updated');
+			$this->session->set_flashdata('created', 'Your reservation has been updated');
 
 			header("Refresh:0");
 		}
