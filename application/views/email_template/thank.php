@@ -794,7 +794,7 @@
                             >
                               <span style="font-size: 38px; color: #2a272b"
                                 ><strong>FALEMINDERIT <br /></strong>
-                                <strong>PËR PJESËMARRJEN TUAJ</strong></span
+                                <strong>P&#203; R PJES&#203; MARRJEN TUAJ</strong></span
                               >
                             </p>
                           </div>
@@ -837,9 +837,9 @@
                               "
                             >
                               <span style="font-size: 16px; color: #2a272b"></span>
-                                Urojmë që të keni kaluar mirë dhe shpresojmë që
-                                tju shikojmë në eventet e rradhës, të cilat mund
-                                ti shikoni në rrjetet tona sociale:
+                                Urojm&#235; q&#235; t&#235; keni kaluar mir&#235; dhe shpresojm&#235; q&#235;
+                                tju shikojm&#235; n&#235; eventet e rradh&#235;s, t&#235; cilat mund
+                                ti shikoni n&#235; rrjetet tona sociale:
                               </span>
                             </p>
                             <p
