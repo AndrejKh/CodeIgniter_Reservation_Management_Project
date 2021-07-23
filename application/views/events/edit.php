@@ -30,5 +30,9 @@
 
     <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    <?php echo form_open_multipart('events/thank-email/' . $event['idevents'], ['id' => 'requestForm']); ?>
+    <input type="hidden" name="event_id" value="<?= $event['idevents'] ?>">
+    <input type="submit" class="btn btn-danger" value="End event" style="float:right; margin-top: -38px;">
+    </form>
   </div>
 </div>

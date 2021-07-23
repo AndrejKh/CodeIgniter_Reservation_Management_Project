@@ -36,7 +36,7 @@
                   <a class="dropdown-item" href="<?= base_url() ?>events/<?= $event['idevents'] ?>/reservations">Reservation List</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" class="btn btn-danger" href="<?= base_url() ?>events/delete/<?= $event['idevents'] ?>">Delete </a>
+                  <?= anchor(base_url() .  "events/delete/" . $event['idevents'], "Delete", array('onclick' => "return confirm('Do you want delete this event?!')", 'class' => 'dropdown-item')) ?>
                 </li>
               </ul>
             </div>
