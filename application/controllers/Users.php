@@ -34,12 +34,12 @@ class Users extends CI_Controller
 				$this->session->set_userdata($user_data);
 
 				// Set message
-				$this->session->set_flashdata('user_loggedin', 'You are now logged in');
+				$this->session->set_flashdata('created', 'You are now logged in');
 
 				redirect('events/list');
 			} else {
 				// Set message
-				$this->session->set_flashdata('login_failed', 'Login is invalid');
+				$this->session->set_flashdata('bad_request', 'Login is invalid');
 
 				redirect('users/login');
 			}
@@ -55,7 +55,7 @@ class Users extends CI_Controller
 		$this->session->unset_userdata('username');
 
 		// Set message
-		$this->session->set_flashdata('user_loggedout', 'You are now logged out');
+		$this->session->set_flashdata('created', 'You are now logged out');
 
 		redirect('users/login');
 	}
