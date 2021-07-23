@@ -2,13 +2,14 @@
 <html>
 
 <head>
-  <title>Royal Dashboard</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/png" href="<?= base_url() . 'assets/images/royal-g-logo-200-200.png' ?>"  sizes="32x32">
+    <title>Royal Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="<?= base_url() . 'assets/images/royal-g-logo-200-200.png' ?>" sizes="32x32">
 
 </head>
 
@@ -16,20 +17,25 @@
     <?php if ($this->session->userdata('logged_in')) : ?>
 
     <header class="navbar sticky-top navbar-light bg-light flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 bg-dark text-white py-2" href="#"><img src="<?= base_url() . 'assets/images/royal-g-logo-183-49.png' ?>" style="width:170px; height: 45px;" /></a>
-      <div class="dropdown admin-desktop">
-        <a href="#" class="btn dropdown-toggle py-0" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-          <!-- <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"> -->
-          <strong><?= $this->session->userdata('username'); ?></strong>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-          <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/logout">Logout</a></li>
-          <!-- <li><a class="dropdown-item" href="#">Another action</a></li> -->
-        </ul>
-      </div>
-      <button class="navbar-toggler position-absolute d-md-none collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 bg-dark text-white py-2" href="#"><img
+                src="<?= base_url() . 'assets/images/royal-g-logo-183-49.png' ?>"
+                style="width:170px; height: 45px;" /></a>
+        <div class="dropdown admin-desktop">
+            <a href="#" class="btn dropdown-toggle py-0" href="#" role="button" id="dropdownMenuLink"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <!-- <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"> -->
+                <strong><?= $this->session->userdata('username'); ?></strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/logout">Logout</a></li>
+                <!-- <li><a class="dropdown-item" href="#">Another action</a></li> -->
+            </ul>
+        </div>
+        <button class="navbar-toggler position-absolute d-md-none collapsed border-0" type="button"
+            data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
     </header>
 
     <div class="container-fluid">
@@ -126,28 +132,28 @@
                 <!-- Flash messages -->
                 <div class="col-md-10 offset-md-1">
                     <?php if ($this->session->flashdata('user_registered')) : ?>
-                    <?php echo '<p class="alert alert-success">' . $this->session->flashdata('user_registered') . '<button class="btn p-0 pb-1" id="closeAlert"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle ms-2" viewBox="0 0 16 16">
+                    <?php echo '<p class="alert alert-success flash-alert">' . $this->session->flashdata('user_registered') . '<button class="btn p-0 pb-1" id="closeAlert"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle ms-2" viewBox="0 0 16 16">
   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
   <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 </svg></button></p>'; ?>
                     <?php endif; ?>
 
                     <?php if ($this->session->flashdata('post_created')) : ?>
-                    <?php echo '<p class="alert alert-success font-weight-bold">' . $this->session->flashdata('post_created') . ' <button class="btn p-0 pb-1" id="closeAlert"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle ms-2" viewBox="0 0 16 16">
+                    <?php echo '<p class="alert alert-success font-weight-bold flash-alert">' . $this->session->flashdata('post_created') . ' <button class="btn p-0 pb-1" id="closeAlert"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle ms-2" viewBox="0 0 16 16">
   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
   <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 </svg></button></p>'; ?>
                     <?php endif; ?>
 
                     <?php if ($this->session->flashdata('post_updated')) : ?>
-                    <?php echo '<p class="alert alert-success font-weight-bold">' . $this->session->flashdata('post_updated') . ' <button class="btn p-0 pb-1" id="closeAlert"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle ms-2" viewBox="0 0 16 16">
+                    <?php echo '<p class="alert alert-success font-weight-bold flash-alert">' . $this->session->flashdata('post_updated') . ' <button class="btn p-0 pb-1" id="closeAlert"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle ms-2" viewBox="0 0 16 16">
   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
   <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 </svg></button></p>'; ?>
                     <?php endif; ?>
 
                     <?php if ($this->session->flashdata('category_created')) : ?>
-                    <?php echo '<p class="alert alert-success">' . $this->session->flashdata('category_created') . '<button class="btn p-0 pb-1" id="closeAlert"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle ms-2" viewBox="0 0 16 16">
+                    <?php echo '<p class="alert alert-success flash-alert">' . $this->session->flashdata('category_created') . '<button class="btn p-0 pb-1" id="closeAlert"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle ms-2" viewBox="0 0 16 16">
   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
   <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 </svg></button></p>'; ?>
@@ -161,41 +167,41 @@
                     <?php endif; ?>
 
                     <?php if ($this->session->flashdata('login_failed')) : ?>
-                    <?php echo '<p class="alert alert-danger">' . $this->session->flashdata('login_failed') . '<button class="btn p-0 pb-1" id="closeAlert"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle ms-2" viewBox="0 0 16 16">
+                    <?php echo '<p class="alert alert-danger flash-alert">' . $this->session->flashdata('login_failed') . '<button class="btn p-0 pb-1" id="closeAlert"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle ms-2" viewBox="0 0 16 16">
   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
   <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 </svg></button></p>'; ?>
                     <?php endif; ?>
                     <?php if ($this->session->flashdata('bad_request')) : ?>
-                    <?php echo '<p class="alert alert-danger">' . $this->session->flashdata('bad_request') . '<button class="btn p-0 pb-1" id="closeAlert"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle ms-2" viewBox="0 0 16 16">
+                    <?php echo '<p class="alert alert-danger flash-alert">' . $this->session->flashdata('bad_request') . '<button class="btn p-0 pb-1" id="closeAlert"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle ms-2" viewBox="0 0 16 16">
   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
   <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 </svg></button></p>'; ?>
                     <?php endif; ?>
 
                     <?php if ($this->session->flashdata('user_loggedin')) : ?>
-                    <?php echo '<p class="alert alert-success">' . $this->session->flashdata('user_loggedin') . '<button class="btn p-0 pb-1" id="closeAlert"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle ms-2" viewBox="0 0 16 16">
+                    <?php echo '<p class="alert alert-success flash-alert">' . $this->session->flashdata('user_loggedin') . '<button class="btn p-0 pb-1" id="closeAlert"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle ms-2" viewBox="0 0 16 16">
   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
   <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 </svg></button></p>'; ?>
                     <?php endif; ?>
 
                     <?php if ($this->session->flashdata('user_loggedout')) : ?>
-                    <?php echo '<p class="alert alert-success">' . $this->session->flashdata('user_loggedout') . '<button class="btn p-0 pb-1" id="closeAlert"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle ms-2" viewBox="0 0 16 16">
+                    <?php echo '<p class="alert alert-success flash-alert">' . $this->session->flashdata('user_loggedout') . '<button class="btn p-0 pb-1" id="closeAlert"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle ms-2" viewBox="0 0 16 16">
   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
   <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 </svg></button></p>'; ?>
                     <?php endif; ?>
 
                     <?php if ($this->session->flashdata('category_deleted')) : ?>
-                    <?php echo '<p class="alert alert-success">' . $this->session->flashdata('category_deleted') . '<button class="btn p-0 pb-1" id="closeAlert"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle ms-2" viewBox="0 0 16 16">
+                    <?php echo '<p class="alert alert-success flash-alert">' . $this->session->flashdata('category_deleted') . '<button class="btn p-0 pb-1" id="closeAlert"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle ms-2" viewBox="0 0 16 16">
   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
   <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 </svg></button></p>'; ?>
                     <?php endif; ?>
 
                     <?php if ($this->session->flashdata('email_sent')) : ?>
-                    <?php echo '<p class="alert alert-success">' . $this->session->flashdata('email_sent') . '<button class="btn p-0 pb-1" id="closeAlert"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle ms-2" viewBox="0 0 16 16">
+                    <?php echo '<p class="alert alert-success flash-alert">' . $this->session->flashdata('email_sent') . '<button class="btn p-0 pb-1" id="closeAlert"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle ms-2" viewBox="0 0 16 16">
   <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
   <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 </svg></button></p>'; ?>
