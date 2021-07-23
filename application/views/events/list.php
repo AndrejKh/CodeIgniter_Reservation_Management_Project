@@ -1,4 +1,6 @@
-<div class="row">
+
+<h1 class="fw-bold py-3">Event List </h1>
+<div class="row table-responsive">
   <table class="table table-striped table-hover">
     <thead>
       <tr>
