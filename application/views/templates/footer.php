@@ -10,16 +10,16 @@ const flashAlert = document.querySelector('.alert');
 // closeAlert.addEventListener('click', function() {
 //     flashAlert.style.display = "none";
 // })
-closeAlert.addEventListener('click', function() {
+if (closeAlert) {
+    closeAlert.addEventListener('click', function() {
+        flashAlert.style.display = "none";
+    })
 
+    setTimeout(function() {
+        flashAlert.style.display = "none";
+    }, 3500);
+}
 
-    flashAlert.style.display = "none";
-
-
-})
-setTimeout(function() {
-    flashAlert.style.display = "none";
-}, 3000);
 
 // function disapearAlert() {
 //     console.log("shhsafghjsa")
