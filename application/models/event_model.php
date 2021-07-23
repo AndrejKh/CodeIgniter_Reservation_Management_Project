@@ -140,7 +140,7 @@ class Event_model extends CI_Model
 			'idevents' =>  $uniqid,
 		);
 		$this->db->insert('events', $data);
-		$this->session->set_flashdata('post_created', 'Your request has been submited,you will recieve an email very soon (please also check spam folder)!');
+		$this->session->set_flashdata('post_created', 'Your event was created! Check your event list.');
 	}
 
 
