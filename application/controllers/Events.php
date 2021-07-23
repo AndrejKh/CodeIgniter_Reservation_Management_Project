@@ -65,6 +65,8 @@ class Events extends CI_Controller
 			header("Refresh:0");
 		}
 	}
+
+
 	public function update($id)
 	{
 
@@ -96,7 +98,7 @@ class Events extends CI_Controller
 				if (!$this->upload->do_upload('image')) {
 					$errors = array('error' => $this->upload->display_errors());
 					$post_image = '';
-					$this->session->set_flashdata('post_deleted', 'Your image was not uploaded!');
+					$this->session->set_flashdata('created', 'Your image was not uploaded!');
 				} else {
 					$data = array('upload_data' => $this->upload->data());
 					$post_image =	$config['file_name'];
@@ -107,7 +109,7 @@ class Events extends CI_Controller
 
 			$this->event_model->update_events($id, $post_image);
 			// Set message
-			$this->session->set_flashdata('post_deleted', 'Your event has been edited');
+			$this->session->set_flashdata('created', 'Your event has been edited');
 			header("Refresh:0");
 		}
 	}
@@ -115,8 +117,13 @@ class Events extends CI_Controller
 
 	public function reservations($id)
 	{
-
-		$data['reservationList'] = $this->reservation_model->get_reservations_for_event($id, 0, 10);
+		$config = get_pagination_config();
+		$config["base_url"] = base_url() . "events/" . $id . "/reservations";
+		$config["total_rows"] = $this->reservation_model->count_reservations_by_event($id)['COUNT(*)'];
+		$this->pagination->initialize($config);
+		$offset = ($this->input->get('page')) ? (($this->input->get('page') - 1) * $config["per_page"]) : 0;
+		$data["links"] = $this->pagination->create_links();
+		$data['reservationList'] = $this->reservation_model->get_reservations_for_event($id, $config["per_page"], $offset);
 
 		$this->load->view('templates/header');
 		$this->load->view('reservations/list', $data);
@@ -131,8 +138,8 @@ class Events extends CI_Controller
 		$this->pagination->initialize($config);
 		$offset = ($this->input->get('page')) ? (($this->input->get('page') - 1) * $config["per_page"]) : 0;
 		$data["links"] = $this->pagination->create_links();
-		$data['eventList'] = $this->event_model->get_events($config["per_page"], $offset);
 		$this->load->view('templates/header');
+		$data['eventList'] = $this->event_model->get_events($config["per_page"], $offset);
 		$this->load->view('events/list', $data);
 		$this->load->view('templates/footer');
 	}
@@ -144,7 +151,7 @@ class Events extends CI_Controller
 		$this->event_model->delete_event($id);
 
 		// Set message
-		$this->session->set_flashdata('post_deleted', 'Your event has been deleted');
+		$this->session->set_flashdata('created', 'Your event has been deleted');
 
 		redirect('events/list');
 	}

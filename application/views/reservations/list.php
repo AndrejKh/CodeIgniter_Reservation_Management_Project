@@ -43,4 +43,7 @@
             <?php } ?>
         </tbody>
     </table>
+    <?php if ($links) { ?>
+        <p><?php echo $links; ?></p>
+    <?php } ?>
 </div>
