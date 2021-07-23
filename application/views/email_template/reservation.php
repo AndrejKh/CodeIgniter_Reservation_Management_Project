@@ -263,8 +263,8 @@
                                   margin-top: 0;
                                   margin-bottom: 0;
                                 ">
-                                                            <strong>Emer Mbiemer:  </strong>
-                                                            <span id="name"> <?= $name ?> <?= $lastname ?></span>
+                                                            <strong>Emer Mbiemer:</strong>
+                                                            <span id="name">&nbsp;<?= $name ?> <?= $lastname ?></span>
                                                         </h3>
                                                     </td>
                                                 </tr>
