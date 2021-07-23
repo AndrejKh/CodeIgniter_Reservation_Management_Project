@@ -124,6 +124,7 @@ class Events extends CI_Controller
 		$offset = ($this->input->get('page')) ? (($this->input->get('page') - 1) * $config["per_page"]) : 0;
 		$data["links"] = $this->pagination->create_links();
 		$data['reservationList'] = $this->reservation_model->get_reservations_for_event($id, $config["per_page"], $offset);
+		$data['event'] = $this->event_model->get_event_by_id($id);
 
 		$this->load->view('templates/header');
 		$this->load->view('reservations/list', $data);
