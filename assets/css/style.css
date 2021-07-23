@@ -330,3 +330,11 @@ right: 0;
 .ticket {
   border: 1px solid #000;
 }
+
+/* alert */
+.flash-alert {
+  top: 0;
+  left: 50%;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
