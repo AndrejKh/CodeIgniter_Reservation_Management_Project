@@ -333,8 +333,8 @@ right: 0;
 
 /* alert */
 .flash-alert {
-  top: 0;
+  top: 10px;
   left: 50%;
   z-index: 9999;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%);
 }
