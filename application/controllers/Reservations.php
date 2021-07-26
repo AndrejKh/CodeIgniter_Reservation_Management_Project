@@ -60,6 +60,7 @@ class Reservations extends CI_Controller
 	{
 
 		$data['reservation']	= $this->reservation_model->get_reservation($id);
+		$data['event'] = $this->event_model->get_event_by_id($data['reservation']['event_id']);
 
 		$this->load->view('templates/header');
 		$this->load->view('reservations/index', $data);

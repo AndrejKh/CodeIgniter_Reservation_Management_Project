@@ -1,13 +1,13 @@
-<h3 class="fw-bold py-3 d-flex justify-content-between">
-    <span class="text-capitalize"><?= $event['guest'] ?> reservation list</span>
-    <a class="btn btn-success" href="<?= base_url() ?>reservations/create/<?= $event['idevents'] ?>">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg me-1"
-            viewBox="0 0 16 16">
-            <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z" />
-        </svg>
-        Add reservation
-    </a>
-    </h1>
+    <h3 class="fw-bold py-3 d-flex justify-content-between">
+        <span class="text-capitalize"><?= $event['guest'] ?> reservation list</span>
+        <a class="btn btn-success" href="<?= base_url() ?>reservations/create/<?= $event['idevents'] ?>">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg me-1"
+                viewBox="0 0 16 16">
+                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z" />
+            </svg>
+            Add reservation
+        </a>
+    </h3>
     <div class="row table-responsive">
         <table class="table table-striped table-hover">
             <thead>
