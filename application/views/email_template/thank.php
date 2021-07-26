@@ -14,12 +14,12 @@
     [endif]-->
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
     <meta content="width=device-width" name="viewport" />
-    <!--[if !mso]><!-->
+
     <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-    <!--<![endif]-->
+
     <title></title>
-    <!--[if !mso]><!-->
-    <!--<![endif]-->
+
+
     <style type="text/css">
         body {
             margin: 0;
@@ -152,7 +152,7 @@
       -webkit-text-size-adjust: 100%;
       background-color: #f3f2f3;
     ">
-    <!--[if IE]><div class="ie-browser"><![endif]-->
+
     <table bgcolor="#f3f2f3" cellpadding="0" cellspacing="0" class="nl-container" role="presentation" style="
         table-layout: fixed;
         vertical-align: top;
@@ -167,7 +167,7 @@
         <tbody>
             <tr style="vertical-align: top" valign="top">
                 <td style="word-break: break-word; vertical-align: top" valign="top">
-                    <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="background-color:#f3f2f3"><![endif]-->
+
                     <div style="background-color: transparent">
                         <div class="block-grid" style="
                   min-width: 320px;
@@ -184,8 +184,8 @@
                     width: 100%;
                     background-color: #ffffff;
                   ">
-                                <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:640px"><tr class="layout-full-width" style="background-color:#ffffff"><![endif]-->
-                                <!--[if (mso)|(IE)]><td align="center" width="640" style="background-color:#ffffff;width:640px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:0px; padding-bottom:0px;"><![endif]-->
+
+
                                 <div class="col num12" style="
                       min-width: 320px;
                       max-width: 640px;
@@ -194,7 +194,7 @@
                       width: 640px;
                     ">
                                     <div class="col_cont" style="width: 100% !important">
-                                        <!--[if (!mso)&(!IE)]><!-->
+
                                         <div style="
                           border-top: 0px solid transparent;
                           border-left: 0px solid transparent;
@@ -205,7 +205,7 @@
                           padding-right: 0px;
                           padding-left: 0px;
                         ">
-                                            <!--<![endif]-->
+
                                             <div class="mobile_hide">
                                                 <table border="0" cellpadding="0" cellspacing="0" class="divider" role="presentation" style="
                               table-layout: fixed;
@@ -259,13 +259,13 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            <!--[if (!mso)&(!IE)]><!-->
+
                                         </div>
-                                        <!--<![endif]-->
+
                                     </div>
                                 </div>
-                                <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
-                                <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+
+
                             </div>
                         </div>
                     </div>
@@ -285,8 +285,8 @@
                     width: 100%;
                     background-color: #ffffff;
                   ">
-                                <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:640px"><tr class="layout-full-width" style="background-color:#ffffff"><![endif]-->
-                                <!--[if (mso)|(IE)]><td align="center" width="213" style="background-color:#ffffff;width:213px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 48px; padding-top:33px; padding-bottom:0px;"><![endif]-->
+
+
                                 <div class="col num4" style="
                       display: table-cell;
                       vertical-align: top;
@@ -295,7 +295,7 @@
                       width: 213px;
                     ">
                                     <div class="col_cont" style="width: 100% !important">
-                                        <!--[if (!mso)&(!IE)]><!-->
+
                                         <div style="
                           border-top: 0px solid transparent;
                           border-left: 0px solid transparent;
@@ -306,7 +306,7 @@
                           padding-right: 0px;
                           padding-left: 30px;
                         ">
-                                            <!--<![endif]-->
+
                                             <div align="left" class="img-container left autowidth" style="padding-right: 0px; padding-left: 0px">
                                                 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 0px;padding-left: 0px;" align="left"><!
                           [endif]--><img alt="I'm an image" border="0" class="left" src="<?= base_url() . 'assets/images/royal-g-logo-200-200.png' ?>" style="
@@ -318,18 +318,18 @@
                               max-width: 100%;
                               display: block;
                             " title="I'm an image" width="154" />
-                                                <!--[if mso]></td></tr></table><![endif]-->
+
                                             </div>
-                                            <!--[if (!mso)&(!IE)]><!-->
+
                                         </div>
-                                        <!--<![endif]-->
+
                                     </div>
                                 </div>
-                                <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
-                                <!--[if (mso)|(IE)]></td><td align="center" width="213" style="background-color:#ffffff;width:213px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:0px; padding-bottom:0px;"><![endif]-->
 
-                                <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
-                                <!--[if (mso)|(IE)]></td><td align="center" width="213" style="background-color:#ffffff;width:213px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 48px; padding-top:5px; padding-bottom:5px;"><![endif]-->
+
+
+
+
                                 <div class="col num4" style="
                       display: table-cell;
                       vertical-align: middle;
@@ -338,7 +338,7 @@
                       width: 213px;
                     ">
                                     <div class="col_cont" style="width: 100% !important">
-                                        <!--[if (!mso)&(!IE)]><!-->
+
                                         <div style="
                           border-top: 0px solid transparent;
                           border-left: 0px solid transparent;
@@ -349,7 +349,7 @@
                           padding-right: 0px;
                           padding-left: 48px;
                         ">
-                                            <!--<![endif]-->
+
                                             <div class="mobile_hide">
                                                 <table border="0" cellpadding="0" cellspacing="0" class="divider" role="presentation" style="
                               table-layout: fixed;
@@ -403,7 +403,7 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top: 0px; padding-bottom: 28px; font-family: Arial, sans-serif"><![endif]-->
+
                                             <div style="
                             color: #555555;
                             font-family: Helvetica Neue, Helvetica, Arial,
@@ -436,14 +436,14 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <!--[if mso]></td></tr></table><![endif]-->
-                                            <!--[if (!mso)&(!IE)]><!-->
+
+
                                         </div>
-                                        <!--<![endif]-->
+
                                     </div>
                                 </div>
-                                <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
-                                <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+
+
                             </div>
                         </div>
                     </div>
@@ -463,8 +463,8 @@
                     width: 100%;
                     background-color: #f3f2f3;
                   ">
-                                <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:640px"><tr class="layout-full-width" style="background-color:#f3f2f3"><![endif]-->
-                                <!--[if (mso)|(IE)]><td align="center" width="640" style="background-color:#f3f2f3;width:640px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:0px; padding-bottom:0px;"><![endif]-->
+
+
                                 <div class="col num12" style="
                       min-width: 320px;
                       max-width: 640px;
@@ -473,7 +473,7 @@
                       width: 640px;
                     ">
                                     <div class="col_cont" style="width: 100% !important">
-                                        <!--[if (!mso)&(!IE)]><!-->
+
                                         <div style="
                           border-top: 0px solid transparent;
                           border-left: 0px solid transparent;
@@ -484,7 +484,7 @@
                           padding-right: 0px;
                           padding-left: 0px;
                         ">
-                                            <!--<![endif]-->
+
                                             <table border="0" cellpadding="0" cellspacing="0" class="divider" role="presentation" style="
                             table-layout: fixed;
                             vertical-align: top;
@@ -537,13 +537,13 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <!--[if (!mso)&(!IE)]><!-->
+
                                         </div>
-                                        <!--<![endif]-->
+
                                     </div>
                                 </div>
-                                <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
-                                <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+
+
                             </div>
                         </div>
                     </div>
@@ -566,8 +566,8 @@
                     background-position: center top;
                     background-repeat: repeat;
                   ">
-                                <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:640px"><tr class="layout-full-width" style="background-color:#ffffff"><![endif]-->
-                                <!--[if (mso)|(IE)]><td align="center" width="640" style="background-color:#ffffff;width:640px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:60px; padding-bottom:0px;"><![endif]-->
+
+
                                 <div class="col num12" style="
                       min-width: 320px;
                       max-width: 640px;
@@ -576,7 +576,7 @@
                       width: 640px;
                     ">
                                     <div class="col_cont" style="width: 100% !important">
-                                        <!--[if (!mso)&(!IE)]><!-->
+
                                         <div style="
                           border-top: 0px solid transparent;
                           border-left: 0px solid transparent;
@@ -587,8 +587,8 @@
                           padding-right: 0px;
                           padding-left: 0px;
                         ">
-                                            <!--<![endif]-->
-                                            <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 38px; padding-left: 38px; padding-top: 20px; padding-bottom: 15px; font-family: Arial, sans-serif"><![endif]-->
+
+
                                             <div style="
                             color: #555555;
                             font-family: Helvetica Neue, Helvetica, Arial,
@@ -622,8 +622,8 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <!--[if mso]></td></tr></table><![endif]-->
-                                            <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 38px; padding-left: 38px; padding-top: 10px; padding-bottom: 10px; font-family: Arial, sans-serif"><![endif]-->
+
+
                                             <div style="
                             color: #555555;
                             font-family: Helvetica Neue, Helvetica, Arial,
@@ -655,21 +655,11 @@
                                                         <span style="font-size: 16px; color: #2a272b"></span>
                                                         Urojm&#235; q&#235; t&#235; keni kaluar mir&#235; dhe shpresojm&#235; q&#235;
                                                         tju shikojm&#235; n&#235; eventet e rradh&#235;s, t&#235; cilat mund
-                                                        ti shikoni n&#235; rrjetet tona sociale: </span>
-                                                    </p>
-                                                    <p style="
-                                margin: 0;
-                                line-height: 1.5;
-                                word-break: break-word;
-                                mso-line-height-alt: 18px;
-                                margin-top: 0;
-                                margin-bottom: 0;
-                              ">
-                                                         
+                                                        ti shikoni n&#235; rrjetet tona sociale:</span>
                                                     </p>
                                                 </div>
                                             </div>
-                                            <!--[if mso]></td></tr></table><![endif]-->
+
                                             <div style="background-color: transparent">
                                                 <div class="block-grid" style="
 								min-width: 320px;
@@ -686,8 +676,8 @@
 								  width: 100%;
 								  background-color: transparent;
 								">
-                                                        <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:500px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
-                                                        <!--[if (mso)|(IE)]><td align="center" width="500" style="background-color:transparent;width:500px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
+
+
                                                         <div class="col num12" style="
 									min-width: 320px;
 									max-width: 500px;
@@ -696,7 +686,7 @@
 									width: 500px;
 								  ">
                                                             <div class="col_cont" style="width: 100% !important">
-                                                                <!--[if (!mso)&(!IE)]><!-->
+
                                                                 <div style="
 										border-top: 0px solid transparent;
 										border-left: 0px solid transparent;
@@ -707,7 +697,7 @@
 										padding-right: 0px;
 										padding-left: 0px;
 									  ">
-                                                                    <!--<![endif]-->
+
                                                                     <table cellpadding="0" cellspacing="0" class="social_icons" role="presentation" style="
 										  table-layout: fixed;
 										  vertical-align: top;
@@ -780,13 +770,13 @@
                                                                             </tr>
                                                                         </tbody>
                                                                     </table>
-                                                                    <!--[if (!mso)&(!IE)]><!-->
+
                                                                 </div>
-                                                                <!--<![endif]-->
+
                                                             </div>
                                                         </div>
-                                                        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
-                                                        <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -801,25 +791,25 @@
                               max-width: 100%;
                               display: block;
                             " title="Image" width="640" />
-                                                <!--[if mso]></td></tr></table><![endif]-->
+
                                             </div>
-                                            <!--[if (!mso)&(!IE)]><!-->
+
                                         </div>
-                                        <!--<![endif]-->
+
                                     </div>
                                 </div>
-                                <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
-                                <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+
+
                             </div>
                         </div>
                     </div>
 
-                    <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+
                 </td>
             </tr>
         </tbody>
     </table>
-    <!--[if (IE)]></div><![endif]-->
+
 </body>
 
 </html>
