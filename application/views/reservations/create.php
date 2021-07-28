@@ -4,7 +4,7 @@
 
         <?php echo validation_errors(); ?>
 
-        <?php echo form_open_multipart('reservations/create/' . $this->uri->segment(3), ['id' => 'requestForm']); ?>
+        <?php echo form_open_multipart('reservations/' . ($this->session->userdata('logged_in') ? 'create' : 'register') . '/' . $this->uri->segment(3), ['id' => 'requestForm']); ?>
 
 
         <div class="form-group mb-3">
@@ -32,13 +32,15 @@
             <input type="number" class="form-control" required name="total_persons" placeholder="Add total" min="1">
         </div>
 
+        <?php if ($this->session->userdata('logged_in')) { ?>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="payment_status" id="flexCheckChecked">
+                <label class="form-check-label" for="flexCheckChecked">
+                    Payed
+                </label>
+            </div>
+        <?php } ?>
 
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="payment_status" id="flexCheckChecked">
-            <label class="form-check-label" for="flexCheckChecked">
-                Payed
-            </label>
-        </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
         </form>

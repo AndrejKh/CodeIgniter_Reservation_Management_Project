@@ -21,14 +21,18 @@ class Users extends CI_Controller
 			$password = hash('sha256', $this->input->post('password'));
 
 			// Login user
-			$user_id = $this->user_model->login($username, $password);
+			$user = $this->user_model->login($username, $password);
+			$user_id = $user['id'];
+			$user_premissions = $user['premissions'];
+
 
 			if ($user_id) {
 				// Create session
 				$user_data = array(
 					'user_id' => $user_id,
 					'username' => $username,
-					'logged_in' => true
+					'logged_in' => true,
+					'user_premissions' =>	$user_premissions
 				);
 
 				$this->session->set_userdata($user_data);

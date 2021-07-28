@@ -30,6 +30,7 @@ class Events extends CI_Controller
 
 	public function create()
 	{
+		$this->check_premissions_event('modify');
 
 		$data['title'] = 'Add Event';
 
@@ -69,6 +70,7 @@ class Events extends CI_Controller
 
 	public function update($id)
 	{
+		$this->check_premissions_event('modify');
 
 		$data['title'] = 'Edit Event';
 
@@ -148,6 +150,7 @@ class Events extends CI_Controller
 
 	public function delete($id)
 	{
+		$this->check_premissions_event('modify');
 
 		$this->event_model->delete_event($id);
 
@@ -166,5 +169,17 @@ class Events extends CI_Controller
 			Event_model::send_email($reservation['email'], $reservation['name'], $email_content);
 		}
 		redirect('events/list');
+	}
+
+
+	public function check_premissions_event($action)
+	{
+		$premissions =	$this->session->userdata('user_premissions');
+		if ((strpos($premissions, 'events') !== false && strpos($premissions, $action) !== false) || $premissions === 'all') {
+			return true;
+		} else {
+			$this->session->set_flashdata('bad_request', 'You dont have premissions!');
+			redirect('/');
+		}
 	}
 }
