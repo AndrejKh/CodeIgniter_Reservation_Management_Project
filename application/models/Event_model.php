@@ -4,7 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
 
-define("RECAPTCHA_V3_SECRET_KEY", '6Ldl0nobAAAAALYBbv1GbHah52mJcXyGn43qufvO');
+// define("RECAPTCHA_V3_SECRET_KEY", '6Ldl0nobAAAAALYBbv1GbHah52mJcXyGn43qufvO');
 
 class Event_model extends CI_Model
 {
@@ -20,9 +20,6 @@ class Event_model extends CI_Model
 		$query = $this->db->get('events');
 		return	$query->row_array();
 	}
-
-
-
 
 	public function get_event_by_id($id)
 	{
@@ -40,20 +37,7 @@ class Event_model extends CI_Model
 	}
 
 
-	public function get_admin_forms_by_id($id)
-	{
-		$query = $this->db->get_where('admin_forms', array('id' => $id));
-		return $query->result_array();
-	}
-
-	public function delete_admin_forms($id)
-	{
-		$this->db->where('id', $id);
-		$this->db->delete('admin_forms');
-		return true;
-	}
-
-	public function get_event_iamge($event_id)
+	public function get_event_image($event_id)
 	{
 		$this->db->select('image');
 		$this->db->where('idevents', $event_id);
@@ -103,24 +87,6 @@ class Event_model extends CI_Model
 		$this->db->update('events', $data, array('idevents' => $id));
 	}
 
-
-
-	static public	function getIPAddress()
-	{
-		//whether ip is from the share internet  
-		if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-			$ip = $_SERVER['HTTP_CLIENT_IP'];
-		}
-		//whether ip is from the proxy  
-		elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-			$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-		}
-		//whether ip is from the remote address  
-		else {
-			$ip = $_SERVER['REMOTE_ADDR'];
-		}
-		return $ip;
-	}
 
 	static public function send_email($emailTo, $username, $content, $subject = 'Here is the subject')
 	{

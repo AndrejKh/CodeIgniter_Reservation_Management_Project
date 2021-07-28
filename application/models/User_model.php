@@ -26,7 +26,7 @@ class User_model extends CI_Model
 		$result = $this->db->get('users');
 
 		if ($result->num_rows() == 1) {
-			return $result->row(0)->id;
+			return ['premissions' => $result->row(0)->premissions, 'id' => $result->row(0)->id];
 		} else {
 			return false;
 		}

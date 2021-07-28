@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 22, 2021 at 01:18 PM
+-- Generation Time: Jul 28, 2021 at 12:02 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -44,13 +44,9 @@ INSERT INTO `events` (`idevents`, `date`, `guest`, `image`, `ticket_price`) VALU
 ('EV60f141d5adb81', '2021-06-30 02:25:00', 'j3', '1c8f44815997be7cc57bed9f0e0185d0.jpg', 234),
 ('EV60f14323a33ef', '2021-07-16 00:28:00', 'aggdfgb', 'cover.jpg', 234),
 ('EV60f143819ec82', '2021-07-16 01:29:00', 'aggdfgb', 'ba_cklit.jpg', 456),
-('EV60f14b1d6d1f2', '2021-07-16 11:04:00', 'aggdfgb', 'img-event-1626944138.png', 456),
-('EV60f546b6d3eb3', '2021-07-06 11:34:00', 'aggdfgb', 'noimage.jpg', 123),
-('EV60f922d67913a', '2021-07-23 11:48:00', 'johan', 'noimage.jpg', 234),
-('EV60f9231bc7fb8', '2021-07-22 11:49:00', 'johan', 'noimage.jpg', 456),
 ('EV60f9238d8b616', '2021-07-05 09:51:00', 'johan', 'skrill.png', 456),
-('EV60f928aca4ba5', '2021-07-19 10:12:00', 'johan', 'img-event-1626941566png', 234),
-('EV60f928ed6a42e', '2021-06-29 10:14:00', 'aggdfgb', 'img-event-1626943795.png', 234);
+('EV60facd9b9b426', '2021-07-05 16:09:00', 'johan', 'img-event-1627049371.png', 234),
+('EV60face23c8f24', '2021-07-23 19:11:00', 'aggdfgb', 'img-event-1627049507.png', 456);
 
 -- --------------------------------------------------------
 
@@ -86,14 +82,15 @@ INSERT INTO `reservations` (`idreservations`, `name`, `lastname`, `phone_nr`, `e
 ('RE60f941f1dcf45', 'beast  headphones', 'uytjhfh', '21474836473', 'saded82633@whipjoy.com', 55, 1, 'EV60f143819ec82', NULL),
 ('RE60f9433cafec7', 'beast  headphones', 'uytjhfh', '21474836473', 'saded82633@whipjoy.com', 55, 1, 'EV60f143819ec82', 'assets/media/qrcode/qr-reservationRE60f9433cafec7.png'),
 ('RE60f94d514bcb5', 'sony  headphones', 'uytjhfh', '111111111111', 'motiyag921@activesniper.com', 4, 0, 'EV60f1346c83ae3', 'assets/media/qrcode/qr-reservationRE60f94d514bcb5.png'),
-('RE60f94dc271303', 'sony  headphones', 'uyt', '13265978624164', 'saded82633@whipjoy.com', 5, 1, 'EV60f1346c83ae3', 'assets/media/qrcode/qr-reservationRE60f94dc271303.png'),
-('RE60f94eddb1733', 'sony  headphones', 'uytjhfh', '13265978624164', 'saded82633@whipjoy.com', 25, 1, 'EV60f1346c83ae3', 'assets/media/qrcode/qr-reservationRE60f94eddb1733.png'),
-('RE60f94f06077e0', 'aa', 'uyt', '13265978624164', 'motiyag921@activesniper.com', 4, 0, 'EV60f1346c83ae3', 'assets/media/qrcode/qr-reservationRE60f94f06077e0.png'),
-('RE60f94f7fed581', 'sony  headphones', 'uyt', '13265978624164', 'motiyag921@activesniper.com', 1, 1, 'EV60f14323a33ef', 'assets/media/qrcode/qr-reservationRE60f94f7fed581.png'),
+('RE60f94dc271303', 'sony  headphones', 'uyt', '13265978624164', 'johan.dhana@hotmail.com', 5, 1, 'EV60f1346c83ae3', 'assets/media/qrcode/qr-reservationRE60f94dc271303.png'),
+('RE60f94f7fed581', 'sony  headphones', 'uyt', '13265978624164', 'motiyag921@activesniper.com', 15, 0, 'EV60f14323a33ef', 'assets/media/qrcode/qr-reservationRE60f94f7fed581.png'),
 ('RE60f94fac20a86', 'sony  headphones', 'uytjhfh', '13265978624164', 'motiyag921@activesniper.com', 3, 0, 'EV60f14323a33ef', 'assets/media/qrcode/qr-reservationRE60f94fac20a86.png'),
 ('RE60f9505ea22cb', 'sony  headphones', 'uytjhfh', '21474836473', 'nimilap650@labebx.com', 25, 0, 'EV60f14323a33ef', 'assets/media/qrcode/qr-reservationRE60f9505ea22cb.png'),
 ('RE60f9508238c9c', 'sony  headphones', 'uytjhfh', '13265978624164', 'motiyag921@activesniper.com', 12, 0, 'EV60f14323a33ef', 'assets/media/qrcode/qr-reservationRE60f9508238c9c.png'),
-('RE60f95261a0cd7', 'sony  headphones', 'uyt', '13265978624164', 'motiyag921@activesniper.com', 3, 1, 'EV60f1346c83ae3', 'assets/media/qrcode/qr-reservationRE60f95261a0cd7.png');
+('RE60fe66727fc54', 'test', 'qw', '0698888888', 'motiyag921@activesniper.com', 1, 1, 'EV60f9238d8b616', 'assets/media/qrcode/qr-reservationRE60fe66727fc54.png'),
+('RE60ffcd734295f', 'aa', 'uytjhfh', '13265978624164', 'johan.dhana@hotmail.com', 1, 0, 'EV60facd9b9b426', 'assets/media/qrcode/qr-reservationRE60ffcd734295f.png'),
+('RE60ffcf6b47e41', 'dev', 'test', '13265978624164', 'johan.dhana@hotmail.com', 2, 1, 'EV60facd9b9b426', 'assets/media/qrcode/qr-reservationRE60ffcf6b47e41.png'),
+('RE60ffe7a7b8b3d', 'test', 'from out', '13265978624164', 'motiyag921@activesniper.com', 2, 1, 'EV60f1346c83ae3', 'assets/media/qrcode/qr-reservationRE60ffe7a7b8b3d.png');
 
 -- --------------------------------------------------------
 
@@ -108,15 +105,18 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `register_date` timestamp NOT NULL DEFAULT current_timestamp()
+  `register_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `premissions` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `zipcode`, `email`, `username`, `password`, `register_date`) VALUES
-(1, 'Cardinal', '01913', 'jdoe@gmail.com', 'admin', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', '2017-04-10 11:14:31');
+INSERT INTO `users` (`id`, `name`, `zipcode`, `email`, `username`, `password`, `register_date`, `premissions`) VALUES
+(1, 'Cardinal', '01913', 'jdoe@gmail.com', 'admin', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', '2017-04-10 11:14:31', 'all'),
+(3, 'user1', '01913', 'jdoe@gmail.com', 'user1', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', '2017-04-10 11:14:31', 'reservations-read-modify'),
+(4, 'user2', '01913', 'jdoe@gmail.com', 'user2', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', '2017-04-10 11:14:31', NULL);
 
 --
 -- Indexes for dumped tables
@@ -149,7 +149,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

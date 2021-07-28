@@ -49,11 +49,10 @@ class Reservation_model extends CI_Model
     public function add_reservation($event_id)
     {
         $uniqid = 'RE' . uniqid();
-
         $payment = $this->input->post('payment_status') === 'on' ? 1 : 0;
         $name = 'qr-reservation' . $uniqid;
         $qr_data =   $this->generate_qrcode(base_url() . 'reservation/' . $uniqid, $name);
-        $event_image = 'assets/images/events/' . $this->event_model->get_event_iamge($event_id)[0]['image'];
+        $event_image = 'assets/images/events/' . $this->event_model->get_event_image($event_id)[0]['image'];
         $data = array(
             'idreservations' => $uniqid,
             'name' => $this->input->post('name'),
@@ -161,7 +160,7 @@ class Reservation_model extends CI_Model
             $mail->AltBody = $content;
 
             $mail->send();
-            echo 'Message has been sent';
+            // echo 'Message has been sent';
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
