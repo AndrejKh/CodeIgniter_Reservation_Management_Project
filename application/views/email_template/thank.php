@@ -3,22 +3,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
 
 <head>
-    <!--[if gte mso 9
-      ]><xml
-        ><o:OfficeDocumentSettings
-          ><o:AllowPNG /><o:PixelsPerInch
-            >96</o:PixelsPerInch
-          ></o:OfficeDocumentSettings
-        ></xml
-      ><!
-    [endif]-->
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
     <meta content="width=device-width" name="viewport" />
 
     <meta content="IE=edge" http-equiv="X-UA-Compatible" />
 
     <title></title>
-
 
     <style type="text/css">
         body {
@@ -47,9 +37,9 @@
 
             .block-grid,
             .col {
-                min-width: 320px !important;
+                min-width: 160px !important;
                 max-width: 100% !important;
-                display: block !important;
+            /*     display: block !important; */
             }
 
             .block-grid {
@@ -130,6 +120,9 @@
             .desktop_hide {
                 display: block !important;
                 max-height: none !important;
+            }
+            .faleminderit{
+                font-size: 24px !important;
             }
         }
     </style>
@@ -336,6 +329,8 @@
                       max-width: 320px;
                       min-width: 212px;
                       width: 213px;
+                      padding-right: 20px;
+
                     ">
                                     <div class="col_cont" style="width: 100% !important">
 
@@ -347,7 +342,7 @@
                           padding-top: 5px;
                           padding-bottom: 5px;
                           padding-right: 0px;
-                          padding-left: 48px;
+                          padding-left: 0px;
                         ">
 
                                             <div class="mobile_hide">
@@ -370,7 +365,7 @@
                                     min-width: 100%;
                                     -ms-text-size-adjust: 100%;
                                     -webkit-text-size-adjust: 100%;
-                                    padding-top: 30px;
+                                    padding-top: 0px;
                                     padding-right: 10px;
                                     padding-bottom: 0px;
                                     padding-left: 10px;
@@ -411,7 +406,7 @@
                             line-height: 1.8;
                             padding-top: 0px;
                             padding-right: 0px;
-                            padding-bottom: 28px;
+                            padding-bottom: 0px;
                             padding-left: 0px;
                           ">
                                                 <div class="txtTinyMce-wrapper" style="
@@ -617,7 +612,7 @@
                                 margin-top: 0;
                                 margin-bottom: 0;
                               ">
-                                                        <span style="font-size: 38px; color: #2a272b"><strong>FALEMINDERIT <br /></strong>
+                                                        <span style="font-size: 38px; color: #2a272b" class="faleminderit"><strong>FALEMINDERIT <br /></strong>
                                                             <strong>P&#203;R PJES&#203; MARRJEN TUAJ</strong></span>
                                                     </p>
                                                 </div>
