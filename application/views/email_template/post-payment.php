@@ -348,9 +348,7 @@
                                 margin-bottom: 0;
                               "
                             >
-                              <span style="font-size: 16px"
-                                >p&#235;r konfirmimin e rezervimit tuaj.</span
-                              >
+                              <span style="font-size: 16px">p&#235;r konfirmimin e rezervimit tuaj.</span>
                             </p>
                           </div>
                         </div>
