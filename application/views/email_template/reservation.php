@@ -229,12 +229,16 @@
   <p style="margin: 10px;">
 	Statusi i pageses:
 	<span style="font-weight: bold"> <?php echo $payment_status ? 'Paguar' : 'Pa paguar' ?></span>
-  </p>        
+  </p>   
+  <p style="margin: 10px;">
+	Numri i personave:  <span style="font-weight: bold"> <?php echo $total_persons ?></span>
+</p> 
   <p style="text-align: center;">	<img
 	src="<?= base_url() . $qr_image ?>"
 	style="width: 100%; max-width: 80px; max-height: 80px; border: 3px solid #e0e0e0"
-  />   </p>              
-    
+  />
+</p>  
+      
 </div>
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
