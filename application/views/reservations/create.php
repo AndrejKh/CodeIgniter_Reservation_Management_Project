@@ -1,5 +1,13 @@
 <div class="row pt-5">
     <div class="col-md-6 offset-md-3 event-form">
+            <div class="card" style="width: 27rem; margin: 20px auto; border: 0 !important;">
+                <img src="<?= base_url() ?>/assets/images/events/<?= $event['image'] ?>" style="width: 100%" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text text-center mb-0" style="font-size: 18px; ">Date: <span class="fw-bold text-capitalize"> <?= $event['date'] ?></span> </p>
+                        <p class="card-text text-center" style="font-size: 22px;">Guest: <span class="fw-bold text-capitalize"> <?= $event['guest'] ?></span> </p>
+                    </div>
+            </div>
+
         <h2 class="text-center fw-bold"><?= $title; ?></h2>
 
         <?php echo validation_errors(); ?>
