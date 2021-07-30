@@ -227,7 +227,7 @@
 	>
   </p>
   <p style="margin: 10px;">
-	Pagesa:
+	Statusi i pageses:
 	<span style="font-weight: bold"> <?php echo $payment_status ? 'Paguar' : 'Pa paguar' ?></span>
   </p>        
   <p style="text-align: center;">	<img
