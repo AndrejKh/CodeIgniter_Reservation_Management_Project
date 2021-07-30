@@ -303,7 +303,7 @@ right: 0;
   box-shadow: 0 0 1.25rem rgba(108, 118, 134, 0.1);
   border-radius: 1%;
   border: 0.0625rem solid rgba(0, 0, 0, 0.08);
-  padding: 75px 50px !important;
+  padding: 40px 30px !important;
 }
 .event-form label {
   font-weight: bolder;

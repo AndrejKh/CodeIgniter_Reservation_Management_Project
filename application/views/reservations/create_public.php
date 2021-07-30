@@ -1,4 +1,4 @@
-<div class="row pt-5">
+<div class="row">
     <div class="col-md-6 offset-md-3 event-form">
             <div class="card" style="width: 27rem; margin: 20px auto; border: 0 !important;">
                 <img src="<?= base_url() ?>/assets/images/events/<?= $event['image'] ?>" style="width: 100%; height: 100%;max-height: 300px;" class="card-img-top" alt="...">
