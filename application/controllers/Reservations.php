@@ -50,7 +50,7 @@ class Reservations extends CI_Controller
 	{
 		$this->check_login();
 		$this->check_premissions_reservations('modify');
-
+		$event_id = $this->uri->segment(3);
 		$data['title'] = 'Add Reservation';
 
 		$this->form_validation->set_rules('name', 'Name', 'required');
@@ -62,11 +62,13 @@ class Reservations extends CI_Controller
 		// $this->form_validation->set_rules('payment_status', 'Payment status', 'required');
 
 		if ($this->form_validation->run() === FALSE) {
+			$data['event'] = $this->event_model->get_event_by_id($event_id);
+
 			$this->load->view('templates/header');
 			$this->load->view('reservations/create', $data);
 			$this->load->view('templates/footer');
 		} else {
-			$this->reservation_model->add_reservation($this->uri->segment(3));
+			$this->reservation_model->add_reservation($event_id);
 			// Set message
 			header("Refresh:0");
 		}
