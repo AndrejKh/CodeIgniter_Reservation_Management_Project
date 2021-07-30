@@ -43,20 +43,16 @@ class Events extends CI_Controller
 			$this->load->view('templates/footer');
 		} else {
 			// Upload Image
-			$config['upload_path'] = './assets/images/events';
-			$config['allowed_types'] = 'gif|jpg|png';
-			$config['max_size'] = '2048';
-			$config['max_width'] = '2000';
-			$config['max_height'] = '2000';
 			$file = explode("/", $_FILES['image']['type']);
 			$ext = '.' . end($file);
-			$config['file_name'] = 'img-event-' . time() . $ext;
+			$config = get_file_upload_config('img-event-' . time() . $ext);
 
 			$this->load->library('upload', $config);
 
 			if (!$this->upload->do_upload('image')) {
 				$errors = array('error' => $this->upload->display_errors());
 				$post_image = 'noimage.jpg';
+				$this->session->set_flashdata('bad_request', 'Your image was not uploaded!');
 			} else {
 				$data = array('upload_data' => $this->upload->data());
 				$post_image = 	$config['file_name'];
@@ -86,21 +82,16 @@ class Events extends CI_Controller
 			$this->load->view('templates/footer');
 		} else {
 			// Upload Image
-			$config['upload_path'] = './assets/images/events';
-			$config['allowed_types'] = 'gif|jpg|png|jpeg';
-			$config['max_size'] = '2048';
-			$config['max_width'] = '2000';
-			$config['max_height'] = '2000';
 			if ($_FILES['image']['type']) {
 				$file = explode("/", $_FILES['image']['type']);
 				$ext = '.' . end($file);
-				$config['file_name'] = 'img-event-' . time() . $ext;
+				$config = get_file_upload_config('img-event-' . time() . $ext);
 
 				$this->load->library('upload', $config);
 				if (!$this->upload->do_upload('image')) {
 					$errors = array('error' => $this->upload->display_errors());
 					$post_image = '';
-					$this->session->set_flashdata('created', 'Your image was not uploaded!');
+					$this->session->set_flashdata('bad_request', 'Your image was not uploaded!');
 				} else {
 					$data = array('upload_data' => $this->upload->data());
 					$post_image =	$config['file_name'];

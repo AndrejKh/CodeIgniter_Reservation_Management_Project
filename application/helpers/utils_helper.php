@@ -33,3 +33,16 @@ function get_pagination_config()
 
     return $config;
 }
+
+
+function get_file_upload_config($file_name)
+{
+    $config = array();
+    $config['upload_path'] = './assets/images/events';
+    $config['allowed_types'] = 'gif|jpg|png|jpeg';
+    $config['max_size'] = '10240';
+    $config['max_width'] = '3000';
+    $config['max_height'] = '3000';
+    $config['file_name'] = $file_name;
+    return $config;
+}
