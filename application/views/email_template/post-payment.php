@@ -305,7 +305,7 @@
                             >
                               <strong
                                 ><span style="font-size: 28px"
-                                  >JU FALENDEROJMË </span
+                                  >JU FALENDEROJM&#203; </span
                                 ></strong
                               >
                             </p>
@@ -349,7 +349,7 @@
                               "
                             >
                               <span style="font-size: 16px"
-                                > për konfirmimin e rezervimit tuaj.</span
+                                > p&#235;r konfirmimin e rezervimit tuaj.</span
                               >
                             </p>
                           </div>
@@ -473,8 +473,8 @@
                               "
                             >
                               <span style="font-size: 16px"
-                                >Urojmë të kaloni një mbrëmje të këndshme në vazhdimësi,
-                                në shoqërinë e të fturave tanë specialë.</span
+                                >Urojm&#235; t&#235; kaloni nj&#235; mbr&#235;mje t&#235; k&#235;ndshme n&#235; vazhdim&#235;si,
+                                n&#235; shoq&#235;rin&#235; e t&#235; fturave tan&#235; special&#235;.</span
                               >
                             </p>
                             <br />
