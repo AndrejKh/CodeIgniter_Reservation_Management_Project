@@ -23,7 +23,7 @@ class Reservations extends CI_Controller
 
 	public function create_public($event_id)
 	{
-		$data['title'] = 'Add Reservation';
+		$data['title'] = 'Rezervo';
 
 		$this->form_validation->set_rules('name', 'Name', 'required');
 		$this->form_validation->set_rules('last_name', 'Lastname', 'required');
