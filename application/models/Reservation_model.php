@@ -67,7 +67,7 @@ class Reservation_model extends CI_Model
         $this->db->insert('reservations', $data);
         $email_data = array_merge($data, array('event_image' => $event_image));
         $email_content = $this->load->view('email_template/reservation', $email_data, TRUE);
-        $this->send_reservation_email($data['email'], $data['name'] . $data['lastname'], $email_content);
+        $this->send_reservation_email($data['email'], $data['name'] . $data['lastname'], $email_content, 'Royal G Hotel! Detajet e rezervimit te biletes tuaj.');
         $this->session->set_flashdata('created', 'Your reservation has been created');
     }
 
@@ -88,7 +88,7 @@ class Reservation_model extends CI_Model
 
         if ($database_payment_status === '0' && $payment === 1) {
             $email_content = $this->load->view('email_template/post-payment', [], TRUE);
-            $this->send_reservation_email($data['email'], $data['name'] . $data['lastname'], $email_content);
+            $this->send_reservation_email($data['email'], $data['name'] . $data['lastname'], $email_content, 'Faleminderit per konfirmimin e pageses');
         }
     }
 
