@@ -17,11 +17,6 @@ wrapper?.addEventListener('click', (event) => {
   const index = window.innerWidth > 576 ? 2 : 3;
   const eventID = event.target.id.split('-')[index];
 
-  const buttonId =
-    window.innerWidth > 576
-      ? `copy-btn-${eventID}`
-      : `copy-btn-mobile-${eventID}`;
-
   const tooltip = tooltipList.find(
     (element) => element._element.id.split('-')[index] === eventID
   );
