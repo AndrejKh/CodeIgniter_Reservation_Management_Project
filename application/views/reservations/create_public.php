@@ -4,7 +4,7 @@
             <img src="<?= base_url() ?>/assets/images/events/<?= $event['image'] ?>" style="width: 100%; height: 100%;max-height: 300px;" class="card-img-top" alt="...">
             <div class="card-body">
                 <p class="card-text text-center mb-0" style="font-size: 18px; ">Data: <span class="fw-bold text-capitalize"> <?= $event['date'] ?></span> </p>
-                <p class="card-text text-center" style="font-size: 22px;">Te ftuar: <span class="fw-bold text-capitalize"> <?= $event['guest'] ?></span> </p>
+                <p class="card-text text-center" style="font-size: 22px;">Te ftuar: <span class="fw-bold text-capitalize"> <br> <?= $event['guest'] ?></span> </p>
             </div>
         </div>
 
@@ -17,16 +17,16 @@
 
         <div class="form-group mb-3">
             <label>Emri</label>
-            <input type="text" class="form-control" required name="name" placeholder="Shto emer">
+            <input type="text" class="form-control" required name="name" placeholder="Shto emër">
         </div>
 
         <div class="form-group mb-3">
             <label>Mbiemri</label>
-            <input type="text" class="form-control" required name="last_name" placeholder="Shto mbiemer">
+            <input type="text" class="form-control" required name="last_name" placeholder="Shto mbiemër">
         </div>
 
         <div class="form-group mb-3">
-            <label>Nr telefoni</label>
+            <label>Numër celulari</label>
             <input type="tel" class="form-control" required name="phone_nr" placeholder="Shto numrin e telefonit">
         </div>
 
@@ -36,11 +36,11 @@
         </div>
 
         <div class="form-group mb-3">
-            <label>Nr i personave</label>
-            <input type="number" class="form-control" required name="total_persons" placeholder="Shto numrin e presonave" min="1">
+            <label>Numëri i personave</label>
+            <input type="number" class="form-control" required name="total_persons" placeholder="Shto numrin e personave" min="1">
         </div>
 
-        <button type="submit" class="btn btn-primary">Dergo</button>
+        <button type="submit" class="btn btn-primary">Dërgo</button>
         </form>
     </div>
 </div>
