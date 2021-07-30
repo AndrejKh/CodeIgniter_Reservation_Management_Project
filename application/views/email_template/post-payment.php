@@ -305,7 +305,7 @@
                             >
                               <strong
                                 ><span style="font-size: 28px"
-                                  >JU FALENDEROJM&#203; </span
+                                  >JU FALENDEROJM&#203;</span
                                 ></strong
                               >
                             </p>
