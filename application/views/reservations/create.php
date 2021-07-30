@@ -1,10 +1,18 @@
 <div class="row pt-5">
     <div class="col-md-6 offset-md-3 event-form">
+        <div class="card" style="width: 27rem; margin: 20px auto; border: 0 !important;">
+            <img src="<?= base_url() ?>/assets/images/events/<?= $event['image'] ?>" style="width: 100%" class="card-img-top" alt="...">
+            <div class="card-body">
+                <p class="card-text text-center mb-0" style="font-size: 18px; ">Date: <span class="fw-bold text-capitalize"> <?= $event['date'] ?></span> </p>
+                <p class="card-text text-center" style="font-size: 22px;">Guest: <span class="fw-bold text-capitalize"> <?= $event['guest'] ?></span> </p>
+            </div>
+        </div>
+
         <h2 class="text-center fw-bold"><?= $title; ?></h2>
 
         <?php echo validation_errors(); ?>
 
-        <?php echo form_open_multipart('reservations/' . ($this->session->userdata('logged_in') ? 'create' : 'register') . '/' . $this->uri->segment(3), ['id' => 'requestForm']); ?>
+        <?php echo form_open_multipart('reservations/create/' . $this->uri->segment(3), ['id' => 'requestForm']); ?>
 
 
         <div class="form-group mb-3">
@@ -32,15 +40,12 @@
             <input type="number" class="form-control" required name="total_persons" placeholder="Add total" min="1">
         </div>
 
-        <?php if ($this->session->userdata('logged_in')) { ?>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="payment_status" id="flexCheckChecked">
-                <label class="form-check-label" for="flexCheckChecked">
-                    Payed
-                </label>
-            </div>
-        <?php } ?>
-
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="payment_status" id="flexCheckChecked">
+            <label class="form-check-label" for="flexCheckChecked">
+                Payed
+            </label>
+        </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
         </form>
