@@ -1,7 +1,7 @@
 <div class="row pt-5">
     <div class="col-md-6 offset-md-3 event-form">
         <div class="card" style="width: 27rem; margin: 20px auto; border: 0 !important;">
-            <img src="<?= base_url() ?>/assets/images/events/<?= $event['image'] ?>" style="width: 100%" class="card-img-top" alt="...">
+            <img src="<?= base_url('/assets/images/events/' . $event['image']) ?>" style="width: 100%" class="card-img-top" alt="...">
         </div>
 
         <h2 class="text-center fw-bold"><?= $title; ?></h2>

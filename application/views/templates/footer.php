@@ -16,7 +16,7 @@
 			}
 		</script>
 
-		<script src="<?= base_url() . 'assets/js/utils.js' ?>"></script>
+		<script src="<?= base_url('assets/js/utils.js') ?>"></script>
 
 		</body>
 

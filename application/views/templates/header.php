@@ -4,12 +4,12 @@
 <head>
     <title>Royal Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
+    <link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet" />
-    <link rel="icon" type="image/png" href="<?= base_url() . 'assets/images/royal-g-logo-200-200.png' ?>" sizes="32x32">
+    <link rel="icon" type="image/png" href="<?= base_url('assets/images/royal-g-logo-200-200.png') ?>" sizes="32x32">
 
 </head>
 
@@ -17,14 +17,14 @@
     <?php if ($this->session->userdata('logged_in')) : ?>
 
         <header class="navbar sticky-top navbar-light bg-light flex-md-nowrap p-0 shadow">
-            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 bg-dark text-white py-2" href="#"><img src="<?= base_url() . 'assets/images/royal-g-logo-183-49.png' ?>" style="width:170px; height: 45px;" /></a>
+            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 bg-dark text-white py-2" href="#"><img src="<?= base_url('assets/images/royal-g-logo-183-49.png') ?>" style="width:170px; height: 45px;" /></a>
             <div class="dropdown admin-desktop">
                 <a href="#" class="btn dropdown-toggle py-0" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                     <!-- <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"> -->
                     <strong><?= $this->session->userdata('username'); ?></strong>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/logout">Logout</a></li>
+                    <li><a class="dropdown-item" href="<?= base_url('users/logout'); ?>">Logout</a></li>
                     <!-- <li><a class="dropdown-item" href="#">Another action</a></li> -->
                 </ul>
             </div>
@@ -40,7 +40,7 @@
                         <div class="position-sticky pt-3">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link text-secondary active" aria-current="page" href="<?php echo base_url(); ?>events/list">
+                                    <a class="nav-link text-secondary active" aria-current="page" href="<?= base_url('events/list'); ?>">
                                         <span data-feather="home"></span>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home" aria-hidden="true">
                                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
@@ -61,7 +61,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-secondary" href="<?php echo base_url(); ?>events/create">
+                                    <a class="nav-link text-secondary" href="<?= base_url('events/create'); ?>">
                                         <span data-feather="shopping-cart"></span>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-plus" viewBox="0 0 16 16" style="margin-right: 4px">
                                             <path d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z" />
@@ -71,16 +71,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            <h6 class="
-                sidebar-heading
-                d-flex
-                justify-content-between
-                align-items-center
-                px-3
-                mt-4
-                mb-1
-                text-muted
-              ">
+                            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
 
                         </div>
                         <div class="pb-4">
@@ -91,7 +82,7 @@
                                     <strong class="text-white"><?= $this->session->userdata('username'); ?></strong>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-                                    <li><a class="dropdown-item" href="<?php echo base_url(); ?>users/logout">Logout</a>
+                                    <li><a class="dropdown-item" href="<?= base_url('users/logout'); ?>">Logout</a>
                                     </li>
                                     <!-- <li><a class="dropdown-item" href="#">Another action</a></li> -->
                                 </ul>
@@ -104,10 +95,6 @@
             </nav>
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 position-relative">
-                <!--    </main> -->
-
-                <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
-
 
             <?php endif; ?>
 
