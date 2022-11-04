@@ -21,6 +21,6 @@ Generate  QR code whithin the CMS
 ## Admin Dashboard
 To access the admin dashboard (yourprojecturl/login)
 
-Username :john
+Username :admin
 
-Password:1212
+Password:123
