@@ -1,5 +1,6 @@
 # reservation-menager
-Bar and restorant reservation Cms in Codeigniter 3
+Bar and restorant reservation Cms in Codeigniter 3.
+
 Generate  QR code whithin the CMS 
 
 ## Requirements
