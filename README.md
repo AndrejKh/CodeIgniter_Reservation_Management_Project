@@ -1,4 +1,4 @@
-# reservation-menager
+# CodeIgniter Reservation-Manager Project
 Bar and restorant reservation Cms in Codeigniter 3.
 
 Generate  QR code whithin the CMS 
